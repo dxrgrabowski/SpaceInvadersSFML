@@ -1,9 +1,9 @@
 ﻿// SI.cpp : Ten plik zawiera funkcję „main”. W nim rozpoczyna się i kończy wykonywanie programu.
 //
 
-#include <iostream>
+#include "player.h"
 
-#include <SFML/Graphics.hpp>
+using namespace sf;
 
 int main()
 {
