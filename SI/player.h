@@ -10,7 +10,7 @@ using namespace sf;
 const int WIDTH = 1920;
 const int HEIGHT = 1080;
 
-class Player {
+class Player : public Drawable {
 public:
 	int hp;
 	double x, y;
