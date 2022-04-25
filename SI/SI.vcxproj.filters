@@ -23,7 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="player.h">
+    <ClInclude Include="classes.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
   </ItemGroup>

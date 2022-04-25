@@ -1,8 +1,12 @@
-#include "player.h"
+#include "classes.h"
 
 
-Player::Player(int a, double b, double c) {
-	hp = a;
-	x = b;
-	y = c;
+Player::Player() :
+	x(0.5f * (WIDTH - 100)),
+	sprite(texture)  {
+
+}
+
+void Player::draw(RenderTarget& target, RenderStates states) const {
+	target.draw(//?)
 }
