@@ -1,9 +1,12 @@
-﻿  Bullet.cpp
-  Player.cpp
+﻿  Enemy.cpp
   SI.cpp
-  Trwa generowanie kodu
-  2 of 98 functions ( 2.0%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Zakończono generowanie kodu
-  SI.vcxproj -> C:\Users\Dexor\source\repos\main\x64\Release\SI.exe
+C:\Users\Dexor\source\repos\main\SI\SI.cpp(14,11): error C2259: „Enemy”: nie można utworzyć wystąpienia klasy abstrakcyjnej
+C:\Users\Dexor\source\repos\main\SI\Enemy.h(5): message : zobacz deklarację „Enemy”
+C:\Users\Dexor\source\repos\main\SI\SI.cpp(14,11): message : z powodu następujących składowych:
+C:\Users\Dexor\source\repos\main\SI\SI.cpp(14,11): message : "void MyShape::draw(void)": jest abstrakcyjna
+C:\Users\Dexor\source\repos\main\SI\MyShape.h(11): message : zobacz deklarację „MyShape::draw”
+C:\Users\Dexor\source\repos\main\SI\SI.cpp(14,16): error C2259: „Enemy”: nie można utworzyć wystąpienia klasy abstrakcyjnej
+C:\Users\Dexor\source\repos\main\SI\Enemy.h(5): message : zobacz deklarację „Enemy”
+C:\Users\Dexor\source\repos\main\SI\SI.cpp(14,16): message : z powodu następujących składowych:
+C:\Users\Dexor\source\repos\main\SI\SI.cpp(14,16): message : "void MyShape::draw(void)": jest abstrakcyjna
+C:\Users\Dexor\source\repos\main\SI\MyShape.h(11): message : zobacz deklarację „MyShape::draw”

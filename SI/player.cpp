@@ -1,6 +1,5 @@
 #include "classes.h"
-
-
+#include "Global.h"
 
 Player::Player(int hp, float x, float y) {
 	this->x = WIDTH/2;
@@ -21,10 +20,10 @@ float Player::right() {
 	return this->shape.getPosition().x + shape.getSize().x / 2;
 }
 
-void Player::shoot(list<Bullet> &bullets,Clock &clock){
-	Time t1 = seconds(0.5f);
+void Player::shoot(list<Bullet> &bullets, Clock &clock){
 	Time elapsed1 = clock.getElapsedTime();
-	if (Keyboard::isKeyPressed(Keyboard::Key::Space) && elapsed1>t1) {
+	Time playerCool = seconds(0.3f);
+	if (Keyboard::isKeyPressed(Keyboard::Key::Space) && elapsed1>playerCool) {
 		bullets.push_back(Bullet(this->shape.getPosition().x, this->shape.getPosition().y));
 		clock.restart();
 	}

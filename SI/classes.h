@@ -1,8 +1,4 @@
 #pragma once
-#ifndef _CLASSES_H
-#define _CLASSES_H
-
-
 #include <iostream>
 #include <cstdlib>
 #include <list>
@@ -10,11 +6,10 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
+#include "Global.h"
+
 using namespace std;
 using namespace sf;
-
-const int WIDTH = 1920;
-const int HEIGHT = 1080;
 
 class Bullet;
 
@@ -55,11 +50,3 @@ public: //lista pocisków tutaj? list<Bullet> bullets;
 	float bottom();
 	void update();
 };
-
-class Enemy : public Drawable {
-public:
-	int hp;
-	double x, y;
-};
-
-#endif

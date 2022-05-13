@@ -6,8 +6,7 @@
 using namespace std;
 using namespace sf;
 
-class Shape : public Drawable{
+class MyShape{
 public:
-	virtual void draw(RenderTarget& target, RenderStates state)=0;
+	virtual void draw()=0;
 };
-

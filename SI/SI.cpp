@@ -2,8 +2,7 @@
 //
 
 #include "classes.h"
-
-using namespace sf;
+#include "Enemy.h"
 
 int main()
 {
@@ -12,6 +11,7 @@ int main()
     window.setFramerateLimit(60);
     list<Bullet> bullets;
     Player player(100, 0.f, 0.f);
+    Enemy enemy(100, 0.f, 0.f);
     while (window.isOpen())
     {
         Event event;
@@ -21,17 +21,18 @@ int main()
                 window.close();
         }
         
-        
         window.clear();
         player.update();
-        player.shoot(bullets,clock);
+        enemy.update();
+        player.shoot(bullets, clock);
         window.draw(player);
+        //window.draw(enemy);
+        enemy.draw(window, sf::RenderStates::Default);
         for (auto& b : bullets) {
             b.update();
             window.draw(b);
         }
         window.display();
     }
-
     return 0;
 }
