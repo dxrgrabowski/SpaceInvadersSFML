@@ -4,6 +4,13 @@
 #include "classes.h"
 #include "Enemy.h"
 
+void filler() {
+    for (int i = 0; i <= 4; i++) {
+        for (int j = 0; i <= 15; i++)
+            enemies.push_back(Enemy(100, WIDTH / 5.f + j * 48.f, HEIGHT * 0.05f - i * 48.f));
+    }
+}
+
 int main()
 {
     Clock clock;
@@ -11,7 +18,7 @@ int main()
     window.setFramerateLimit(60);
     list<Bullet> bullets;
     Player player(100, 0.f, 0.f);
-    Enemy enemy(100, 0.f, 0.f);
+    filler();
     while (window.isOpen())
     {
         Event event;
@@ -23,14 +30,15 @@ int main()
         
         window.clear();
         player.update();
-        enemy.update();
         player.shoot(bullets, clock);
         window.draw(player);
-        //window.draw(enemy);
-        enemy.draw(window, sf::RenderStates::Default);
         for (auto& b : bullets) {
             b.update();
             window.draw(b);
+        }
+        for (auto& enemy : enemies) {
+            enemy.update();
+            enemy.draw(window, sf::RenderStates::Default);
         }
         window.display();
     }

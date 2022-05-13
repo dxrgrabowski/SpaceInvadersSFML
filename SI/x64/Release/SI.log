@@ -1,12 +1,4 @@
 ﻿  Enemy.cpp
   SI.cpp
-C:\Users\Dexor\source\repos\main\SI\SI.cpp(14,11): error C2259: „Enemy”: nie można utworzyć wystąpienia klasy abstrakcyjnej
-C:\Users\Dexor\source\repos\main\SI\Enemy.h(5): message : zobacz deklarację „Enemy”
-C:\Users\Dexor\source\repos\main\SI\SI.cpp(14,11): message : z powodu następujących składowych:
-C:\Users\Dexor\source\repos\main\SI\SI.cpp(14,11): message : "void MyShape::draw(void)": jest abstrakcyjna
-C:\Users\Dexor\source\repos\main\SI\MyShape.h(11): message : zobacz deklarację „MyShape::draw”
-C:\Users\Dexor\source\repos\main\SI\SI.cpp(14,16): error C2259: „Enemy”: nie można utworzyć wystąpienia klasy abstrakcyjnej
-C:\Users\Dexor\source\repos\main\SI\Enemy.h(5): message : zobacz deklarację „Enemy”
-C:\Users\Dexor\source\repos\main\SI\SI.cpp(14,16): message : z powodu następujących składowych:
-C:\Users\Dexor\source\repos\main\SI\SI.cpp(14,16): message : "void MyShape::draw(void)": jest abstrakcyjna
-C:\Users\Dexor\source\repos\main\SI\MyShape.h(11): message : zobacz deklarację „MyShape::draw”
+SI.obj : error LNK2005: Element "class std::list<class Enemy,class std::allocator<class Enemy> > enemies" (?enemies@@3V?$list@VEnemy@@V?$allocator@VEnemy@@@std@@@std@@A) jest już zdefiniowany w elemencie Enemy.obj
+C:\Users\Dexor\source\repos\main\x64\Release\SI.exe : fatal error LNK1169: znaleziono co najmniej jeden wielokrotnie zdefiniowany symbol

@@ -8,5 +8,5 @@ using namespace sf;
 
 class MyShape{
 public:
-	virtual void draw()=0;
+	virtual void draw(RenderTarget& target, RenderStates state)=0;
 };
