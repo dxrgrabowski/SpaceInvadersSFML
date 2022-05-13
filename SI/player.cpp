@@ -2,10 +2,11 @@
 
 
 
-Player::Player(float x, float y) {
-	this->x = x;
-	this->y = y;
-	
+Player::Player(int hp, float x, float y) {
+	this->x = WIDTH/2;
+	this->y = HEIGHT*0.9;
+	this->hp = hp;
+
 	shape.setPosition(this->x, this->y);
 	shape.setSize(RectSize);
 	shape.setFillColor(Color::White);
@@ -20,16 +21,18 @@ float Player::right() {
 	return this->shape.getPosition().x + shape.getSize().x / 2;
 }
 
-void shoot() {
-	bullets.push_back(new Bullet(this->shape.getPosition().x, this->shape.getPosition().y));
+void Player::shoot(list<Bullet> &bullets){
+	if (Keyboard::isKeyPressed(Keyboard::Key::W)) {
+		bullets.push_back(Bullet(this->shape.getPosition().x, this->shape.getPosition().y));
+	}
 }
 
 void Player::update() {
 	this->shape.move(this->velocity);
-	if (Keyboard::isKeyPressed(Keyboard::Key::Left) && this->left() > 0) {
+	if ((Keyboard::isKeyPressed(Keyboard::Key::Left) || Keyboard::isKeyPressed(Keyboard::Key::A)) && this->left() > 0) {
 		velocity.x = -velocityVar;
 	}
-	else if (Keyboard::isKeyPressed(Keyboard::Key::Right) && this->right() < WIDTH) {
+	else if ((Keyboard::isKeyPressed(Keyboard::Key::Right) || Keyboard::isKeyPressed(Keyboard::Key::D)) && this->right() < WIDTH) {
 		velocity.x = velocityVar;
 	}
 	else

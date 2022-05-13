@@ -9,7 +9,8 @@ int main()
 {
     RenderWindow window{ VideoMode{WIDTH, HEIGHT}, "Space Invaders" };
     window.setFramerateLimit(60);
-    Player player(0.f,0.f);
+    list<Bullet> bullets;
+    Player player(100, 0.f, 0.f);
     while (window.isOpen())
     {
         Event event;
@@ -20,9 +21,14 @@ int main()
         }
         
         
-        player.update();
         window.clear();
+        player.update();
+        player.shoot(bullets);
         window.draw(player);
+        for (auto& b : bullets) {
+            b.update();
+            window.draw(b);
+        }
         window.display();
     }
 
