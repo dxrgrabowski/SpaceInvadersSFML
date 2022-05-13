@@ -7,6 +7,7 @@ using namespace sf;
 
 int main()
 {
+    Clock clock;
     RenderWindow window{ VideoMode{WIDTH, HEIGHT}, "Space Invaders" };
     window.setFramerateLimit(60);
     list<Bullet> bullets;
@@ -23,7 +24,7 @@ int main()
         
         window.clear();
         player.update();
-        player.shoot(bullets);
+        player.shoot(bullets,clock);
         window.draw(player);
         for (auto& b : bullets) {
             b.update();

@@ -31,7 +31,7 @@ public:
 	Player(int hp, float x, float y);
 	~Player() = default;
 	
-	void shoot(list<Bullet> &bullets);
+	void shoot(list<Bullet> &bullets, Clock &clock);
 	float left();
 	float right();
 	void update();

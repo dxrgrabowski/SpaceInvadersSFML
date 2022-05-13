@@ -21,10 +21,14 @@ float Player::right() {
 	return this->shape.getPosition().x + shape.getSize().x / 2;
 }
 
-void Player::shoot(list<Bullet> &bullets){
-	if (Keyboard::isKeyPressed(Keyboard::Key::W)) {
+void Player::shoot(list<Bullet> &bullets,Clock &clock){
+	Time t1 = seconds(0.5f);
+	Time elapsed1 = clock.getElapsedTime();
+	if (Keyboard::isKeyPressed(Keyboard::Key::Space) && elapsed1>t1) {
 		bullets.push_back(Bullet(this->shape.getPosition().x, this->shape.getPosition().y));
+		clock.restart();
 	}
+
 }
 
 void Player::update() {
