@@ -1,7 +1,22 @@
-﻿  player.cpp
+﻿  Bullet.cpp
+C:\Users\Dexor\source\repos\main\SI\classes.h(20,7): error C2065: "Bullet": niezadeklarowany identyfikator
+C:\Users\Dexor\source\repos\main\SI\classes.h(20,2): error C2923: „std::list”: „Bullet” nie jest prawidłowym argumentem typu szablon dla parametru „_Ty”
+C:\Users\Dexor\source\repos\main\SI\classes.h(20): message : zobacz deklarację „Bullet”
+C:\Users\Dexor\source\repos\main\SI\classes.h(20,2): error C2976: "std::list": za mało argumentów szablon
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\list(754): message : zobacz deklarację „std::list”
+  Player.cpp
+C:\Users\Dexor\source\repos\main\SI\classes.h(20,7): error C2065: "Bullet": niezadeklarowany identyfikator
+C:\Users\Dexor\source\repos\main\SI\classes.h(20,2): error C2923: „std::list”: „Bullet” nie jest prawidłowym argumentem typu szablon dla parametru „_Ty”
+C:\Users\Dexor\source\repos\main\SI\classes.h(20): message : zobacz deklarację „Bullet”
+C:\Users\Dexor\source\repos\main\SI\classes.h(20,2): error C2976: "std::list": za mało argumentów szablon
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\list(754): message : zobacz deklarację „std::list”
+C:\Users\Dexor\source\repos\main\SI\Player.cpp(5,34): error C2512: "std::list": niedostępny odpowiedni konstruktor domyślny
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\list(754,1): message : zobacz deklarację „std::list”
+  Shape.cpp
+C:\Users\Dexor\source\repos\main\SI\Shape.h(5,20): error C2061: błąd składniowy: identyfikator „Render”
   SI.cpp
-  Trwa generowanie kodu
-  Previous IPDB was built with incompatible compiler, fall back to full compilation.
-  All 6 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Zakończono generowanie kodu
-  SI.vcxproj -> C:\Users\Dexor\source\repos\main\x64\Release\SI.exe
+C:\Users\Dexor\source\repos\main\SI\classes.h(20,7): error C2065: "Bullet": niezadeklarowany identyfikator
+C:\Users\Dexor\source\repos\main\SI\classes.h(20,2): error C2923: „std::list”: „Bullet” nie jest prawidłowym argumentem typu szablon dla parametru „_Ty”
+C:\Users\Dexor\source\repos\main\SI\classes.h(20): message : zobacz deklarację „Bullet”
+C:\Users\Dexor\source\repos\main\SI\classes.h(20,2): error C2976: "std::list": za mało argumentów szablon
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\list(754): message : zobacz deklarację „std::list”

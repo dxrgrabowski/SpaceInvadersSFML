@@ -7,11 +7,9 @@ using namespace sf;
 
 int main()
 {
-    RenderWindow window{ VideoMode{WIDTH / 2, HEIGHT / 2}, "Space Invaders" };
+    RenderWindow window{ VideoMode{WIDTH, HEIGHT}, "Space Invaders" };
     window.setFramerateLimit(60);
-    CircleShape shape(300.f);
-    shape.setFillColor(Color::Green);
-
+    Player player(0.f,0.f);
     while (window.isOpen())
     {
         Event event;
@@ -20,9 +18,11 @@ int main()
             if (event.type == Event::Closed)
                 window.close();
         }
-
+        
+        
+        player.update();
         window.clear();
-        window.draw(shape);
+        window.draw(player);
         window.display();
     }
 
