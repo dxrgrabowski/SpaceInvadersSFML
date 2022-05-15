@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Enemy.h"
 using namespace sf;
 
 const int WIDTH = 1920; 

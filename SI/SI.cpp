@@ -3,11 +3,15 @@
 
 #include "classes.h"
 #include "Enemy.h"
+ //problem
+
+list<Enemy> enemies;
 
 void filler() {
     for (int i = 0; i <= 4; i++) {
-        for (int j = 0; i <= 15; i++)
-            enemies.push_back(Enemy(100, WIDTH / 5.f + j * 48.f, HEIGHT * 0.05f - i * 48.f));
+        for (int j = 0; j <= 15; j++) {
+            enemies.push_back(Enemy(100, WIDTH / 5.f + j * 68.f, HEIGHT * 0.05f + i * 68.f));
+        }
     }
 }
 
@@ -35,6 +39,7 @@ int main()
         for (auto& b : bullets) {
             b.update();
             window.draw(b);
+            b.hit(enemies, bullets);
         }
         for (auto& enemy : enemies) {
             enemy.update();

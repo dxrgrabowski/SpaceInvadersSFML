@@ -19,6 +19,12 @@ float Player::left() {
 float Player::right() {
 	return this->shape.getPosition().x + shape.getSize().x / 2;
 }
+float Player::top() {
+	return this->shape.getPosition().y + shape.getSize().y / 2;
+}
+float Player::bottom() {
+	return this->shape.getPosition().y - shape.getSize().y / 2;
+}
 
 void Player::shoot(list<Bullet> &bullets, Clock &clock){
 	Time elapsed1 = clock.getElapsedTime();
@@ -40,6 +46,13 @@ void Player::update() {
 	}
 	else
 		velocity.x = 0;
+}
+
+bool Player::inside(float x, float y) {
+	if (this->left() <= x && this->right() >= x && this->bottom() >= y && this->top() <= y)
+		return 1;
+	else
+		return 0;
 }
 
 void Player::draw(RenderTarget& target, RenderStates state) const {

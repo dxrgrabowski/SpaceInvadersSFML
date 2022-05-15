@@ -29,6 +29,9 @@ public:
 	void shoot(list<Bullet> &bullets, Clock &clock);
 	float left();
 	float right();
+	float top();
+	float bottom();
+	bool inside(float x, float y);
 	void update();
 	//void Start(float &x,float &y);
 };
@@ -45,8 +48,10 @@ public: //lista pocisków tutaj? list<Bullet> bullets;
 	Bullet(float x, float y);
 	~Bullet() = default;
 	
-
+	float left();
+	float right();
 	float top();
 	float bottom();
 	void update();
+	void hit(list<Enemy>& enemies, list<Bullet>& bullets);
 };

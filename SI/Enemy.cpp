@@ -2,8 +2,8 @@
 #include "Global.h"
 
 Enemy::Enemy(int hp, float x, float y) {
-	this->x = WIDTH / 5;
-	this->y = HEIGHT * 0.05;
+	this->x = x;
+	this->y = y;
 	this->hp = hp;
 
 	shape.setPosition(this->x, this->y);
@@ -28,7 +28,7 @@ float Enemy::bottom() {
 
 void Enemy::update() {
 	this->shape.move(this->velocity);
-	if (this->left() <= 0) {
+	if (this->left() <= 0) {	
 		velocity.x = velocityVar;
 		shape.setPosition(shape.getPosition().x, shape.getPosition().y + shape.getSize().y);
 	}
@@ -41,8 +41,14 @@ void Enemy::update() {
 	}
 }
 
+bool Enemy::inside(float x, float y) {
+	if (this->left() <= x && this->right() >= x && this->bottom() >= y && this->top() <= y)
+		return 1;
+	else
+		return 0;
+}
+
 void Enemy::draw(RenderTarget& target, RenderStates state){
 	target.draw(this->shape, sf::RenderStates::Default);
 }
-
 
