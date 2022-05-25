@@ -3,15 +3,16 @@
 #include <list>
 #include "Global.h"
 
+class Parameter;
 
-class Enemy :
-    public MyShape{
+class Enemy : public Drawable{
 	float x, y;
 	int hp;
 	Vector2f RectSize = { 48,48 };
-	float velocityVar{ 2.0f };
+	//Czy jeœli list<Enemy> enemies; tutaj bêdzie to dla ka¿dego obiektu bedzie stworzona ta lista
 	Vector2f velocity{ velocityVar, 0.f };
 public:
+	float velocityVar{ 2.0f };
 	RectangleShape shape;
 	Enemy(int hp, float x, float y);
 	~Enemy() = default;
@@ -22,10 +23,28 @@ public:
 	float top();
 	float bottom();
 	bool inside(float x, float y);
-	void update();
-
+	void update(Parameter param);
 	// Odziedziczono za poœrednictwem elementu MyShape
-	virtual void draw(RenderTarget& target, RenderStates state);
+	void draw(RenderTarget& target, RenderStates state) const override;
 };
 
+class Mylist {
+public:
+	list<Enemy> enemies;
+	list<Enemy> getlist();
+	void filler(Parameter param);
+	
+	Mylist() {
 
+	}
+};
+
+class Parameter {
+public:
+	list<Enemy> changeParams(float velocityVar);
+	list<Enemy> if_Paramchanged(float velocityVar, bool flag);
+	list<Enemy> worklist;
+	Parameter(Mylist lista) {
+		this->worklist=lista.enemies;
+	}
+};

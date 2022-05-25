@@ -53,5 +53,5 @@ public: //lista pocisków tutaj? list<Bullet> bullets;
 	float top();
 	float bottom();
 	void update();
-	void hit(list<Enemy>& enemies, list<Bullet>& bullets);
+	void hit(list<Enemy> enemies, list<Bullet>& bullets);
 };

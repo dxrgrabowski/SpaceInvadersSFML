@@ -1,8 +1,7 @@
 ﻿  Bullet.cpp
-C:\Users\Dexor\source\repos\main\SI\Bullet.cpp(43,24): error C2664: „void std::list<Enemy,std::allocator<Enemy>>::assign(std::initializer_list<_Ty>)”: nie można dokonać konwersji argumentu 1 z „Enemy” do „std::initializer_list<_Ty>”
-          with
-          [
-              _Ty=Enemy
-          ]
-C:\Users\Dexor\source\repos\main\SI\Bullet.cpp(43,19): message : Nie jest dostępny żaden operator konwersji zdefiniowany przez użytkownika, który mógłby wykonać tę konwersję lub operator nie może zostać wywołany
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\list(1021,10): message : zobacz deklarację „std::list<Enemy,std::allocator<Enemy>>::assign”
+  Trwa generowanie kodu
+  1 of 219 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Zakończono generowanie kodu
+  SI.vcxproj -> C:\Users\Dexor\source\repos\main\x64\Release\SI.exe
