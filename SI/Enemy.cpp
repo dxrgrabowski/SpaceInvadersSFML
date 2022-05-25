@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "Global.h"
+#include <iostream>
 
 Enemy::Enemy(int hp, float x, float y) {
 	this->x = x;
@@ -34,6 +35,7 @@ void Enemy::update() {
 	}
 	else if (this->right() >= WIDTH) {
 		velocity.x = -velocityVar;
+		//param.changeParams(this->velocityVar);
 		shape.setPosition(shape.getPosition().x, shape.getPosition().y + shape.getSize().y);
 	}
 	if (this->bottom() <= HEIGHT) {
@@ -49,6 +51,34 @@ bool Enemy::inside(float x, float y) {
 }
 
 void Enemy::draw(RenderTarget& target, RenderStates state){
-	target.draw(this->shape, sf::RenderStates::Default);
+	target.draw(this->shape, state);
 }
 
+/*
+list<Enemy> Parameter::changeParams(float velocity) {
+	for (auto& enemy : this->worklist) {
+		enemy.velocityVar = enemy.velocityVar * -1;
+	}
+	return this->worklist;
+}
+
+list<Enemy> Parameter::if_Paramchanged(float velocityVar, bool flag) {
+	if( flag == true)
+	{
+		this->changeParams(velocityVar);
+	}
+	return this->worklist;
+}
+
+list<Enemy> Mylist::getlist() {
+	return this->enemies;
+}
+
+void Mylist::filler(Parameter param) {
+	for (int i = 0; i <= 4; i++) {
+		for (int j = 0; j <= 15; j++) {
+			param.worklist.push_back(Enemy(100, WIDTH / 5.f + j * 68.f, HEIGHT * 0.05f + i * 68.f));
+		}
+	}
+}
+*/

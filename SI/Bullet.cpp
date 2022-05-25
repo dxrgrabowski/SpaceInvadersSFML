@@ -37,10 +37,9 @@ void Bullet::draw(RenderTarget& target, RenderStates state) const {
 	target.draw(this->shape, state);
 }
 
-void Bullet::hit(list<Enemy> &enemies, list<Bullet> &bullets) {
+void Bullet::hit(list<Enemy>& enemies, list<Bullet>& bullets) {
 	for (auto& enemy : enemies) {
 		if (enemy.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds()))
-			//enemy.shape.setFillColor(Color::Transparent);
-			//Lista czy wektor, zamiana elementu z ostatnim i usun¹æ ostatni? zamiast for zakresowego iterator??
+			enemy.shape.setFillColor(Color::Transparent);
 	}
 }
