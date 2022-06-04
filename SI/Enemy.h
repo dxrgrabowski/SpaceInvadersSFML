@@ -9,7 +9,7 @@ class Enemy :
 	float x, y;
 	int hp;
 	Vector2f RectSize = { 48,48 };
-	float velocityVar{ 2.0f };
+	float velocityVar{ 4.0f };
 	Vector2f velocity{ velocityVar, 0.f };
 public:
 	RectangleShape shape;
@@ -28,18 +28,18 @@ public:
 	virtual void draw(RenderTarget& target, RenderStates state);
 };
 
-/*
+
 class Mylist {
 public:
+	Mylist() = default;
+	~Mylist() = default;
+	
 	list<Enemy> enemies;
 	list<Enemy> getlist();
-	void filler(Parameter param);
+	void filler();
 	
-	Mylist() {
-
-	}
 };
-
+/*
 class Parameter {
 public:
 	list<Enemy> changeParams(float velocityVar);
