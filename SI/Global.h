@@ -2,6 +2,6 @@
 #include "Enemy.h"
 using namespace sf;
 
-const int WIDTH = 1920; 
-const int HEIGHT = 1080;
+const int WIDTH = 1600; 
+const int HEIGHT = 900;
 //Time playerCool = seconds(0.3f);

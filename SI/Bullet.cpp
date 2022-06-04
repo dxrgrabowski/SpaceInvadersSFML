@@ -41,5 +41,6 @@ void Bullet::hit(list<Enemy>& enemies, list<Bullet>& bullets) {
 	for (auto& enemy : enemies) {
 		if (enemy.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds()))
 			enemy.shape.setFillColor(Color::Transparent);
+			//Lista czy wektor, zamiana elementu z ostatnim i usun¹æ ostatni? zamiast for zakresowego iterator??
 	}
 }
