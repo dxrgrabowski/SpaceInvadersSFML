@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
+
 #include "Global.h"
 
 using namespace std;
@@ -52,5 +53,5 @@ public: //lista pocisków tutaj? list<Bullet> bullets;
 	float top();
 	float bottom();
 	void update();
-	void hit(vector<Enemy>& enemies, list<Bullet>& bullets);
+	void hit(vector<Enemy>& enemies, list<Bullet>& bullets, int &killedEnemies);
 };

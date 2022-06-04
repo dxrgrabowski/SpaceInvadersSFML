@@ -5,6 +5,16 @@
 
 int main()
 {
+    int killedEnemies = 0;
+    Text enemySpeed;
+    Text enemiesRemain;
+
+    enemiesRemain.setString("Enemies left: ");
+    enemiesRemain.setCharacterSize(18);
+    enemiesRemain.setFillColor(Color::White);
+    enemiesRemain.setOutlineColor(Color::Magenta);
+    enemiesRemain.setPosition(100.f, 100.f);
+    
     Clock clock;
     RenderWindow window{ VideoMode{WIDTH, HEIGHT}, "Space Invaders" };
     window.setFramerateLimit(60);
@@ -21,15 +31,16 @@ int main()
             if (event.type == Event::Closed)
                 window.close();
         }
-        
         window.clear();
+
+        window.draw(enemiesRemain);
         player.update();
         player.shoot(bullets, clock);
         window.draw(player);
         for (auto& b : bullets) {
             b.update();
             window.draw(b);
-            b.hit(enemyList.enemies, bullets);
+            b.hit(enemyList.enemies, bullets, killedEnemies);
         }
         for (auto& enemy : enemyList.enemies) {
             enemy.update(enemyList.enemies);               //podwójna pętla for do korekty
