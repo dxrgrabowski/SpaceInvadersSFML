@@ -1,19 +1,20 @@
 ﻿#pragma once
 #include "MyShape.h"
-#include <list>
+#include <vector>
 #include "Global.h"
 
+class Mylist;
 
 class Enemy :
 	public MyShape {
 	float x, y;
 	int hp;
 	Vector2f RectSize = { 48,48 };
-	float velocityVar{ 4.0f };
-	Vector2f velocity{ velocityVar, 0.f };
 public:
+	int ID;
+	Vector2f velocity{ 0.f , 0.f };
 	RectangleShape shape;
-	Enemy(int hp, float x, float y);
+	Enemy(int hp, float x, float y, int ID);
 	~Enemy() = default;
 
 	//void shoot(list<EnemyBullet> &bullets);
@@ -22,8 +23,7 @@ public:
 	float top();
 	float bottom();
 	bool inside(float x, float y);
-	void update();
-
+	void update(vector<Enemy>& enemies);
 	// Odziedziczono za poœrednictwem elementu MyShape
 	virtual void draw(RenderTarget& target, RenderStates state);
 };
@@ -34,19 +34,8 @@ public:
 	Mylist() = default;
 	~Mylist() = default;
 	
-	list<Enemy> enemies;
-	list<Enemy> getlist();
+	vector<Enemy> enemies;
+	vector<Enemy> getlist();
 	void filler();
-	
+	void startMoving();
 };
-/*
-class Parameter {
-public:
-	list<Enemy> changeParams(float velocityVar);
-	list<Enemy> if_Paramchanged(float velocityVar, bool flag);
-	list<Enemy> worklist;
-	Parameter(Mylist lista) {
-		this->worklist=lista.enemies;
-	}
-};
-*/

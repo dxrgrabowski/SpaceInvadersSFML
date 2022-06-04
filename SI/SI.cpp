@@ -12,6 +12,7 @@ int main()
     Player player(100, 0.f, 0.f);
     Mylist enemyList;
     enemyList.filler();
+    enemyList.startMoving();
     while (window.isOpen())
     {
         Event event;
@@ -20,7 +21,7 @@ int main()
             if (event.type == Event::Closed)
                 window.close();
         }
-
+        
         window.clear();
         player.update();
         player.shoot(bullets, clock);
@@ -31,7 +32,7 @@ int main()
             b.hit(enemyList.enemies, bullets);
         }
         for (auto& enemy : enemyList.enemies) {
-            enemy.update();
+            enemy.update(enemyList.enemies);               //podwójna pętla for do korekty
             enemy.draw(window, sf::RenderStates::Default);
         }
         window.display();

@@ -1,10 +1,11 @@
 #include "Enemy.h"
 #include "Global.h"
 
-Enemy::Enemy(int hp, float x, float y) {
+Enemy::Enemy(int hp, float x, float y, int ID) {
 	this->x = x;
 	this->y = y;
 	this->hp = hp;
+	this->ID = ID;
 
 	shape.setPosition(this->x, this->y);
 	shape.setSize(RectSize);
@@ -26,20 +27,33 @@ float Enemy::bottom() {
 	return this->shape.getPosition().y - shape.getSize().y / 2.f;
 }
 
-void Enemy::update() {
+void Mylist::startMoving() {
+	for (auto& enemy : this->enemies) {
+		enemy.velocity.x = ES;
+		enemy.shape.move(enemy.velocity);
+	}
+}
+
+void Enemy::update(vector<Enemy>& enemies) {
 	this->shape.move(this->velocity);
+	
 	if (this->left() <= 0) {
-		velocity.x = velocityVar;
-		shape.setPosition(shape.getPosition().x, shape.getPosition().y + shape.getSize().y);
+		for (auto& enemy : enemies) {
+			enemy.velocity.x = ES;
+			enemy.shape.setPosition(enemy.shape.getPosition().x, enemy.shape.getPosition().y + enemy.shape.getSize().y);
+		}
 	}
 	else if (this->right() >= WIDTH) {
-		velocity.x = -velocityVar;
-		shape.setPosition(shape.getPosition().x, shape.getPosition().y + shape.getSize().y);
+		for (auto& enemy : enemies) {
+			enemy.velocity.x = -ES;
+			enemy.shape.setPosition(enemy.shape.getPosition().x, enemy.shape.getPosition().y + enemy.shape.getSize().y);
+		}
 	}
 	if (this->bottom() <= HEIGHT) {
 		//KONIEC GRY
 	}
 }
+
 
 bool Enemy::inside(float x, float y) {
 	if (this->left() <= x && this->right() >= x && this->bottom() >= y && this->top() <= y)
@@ -52,34 +66,14 @@ void Enemy::draw(RenderTarget& target, RenderStates state) {
 	target.draw(this->shape, sf::RenderStates::Default);
 }
 
-list<Enemy> Mylist::getlist() {
+vector<Enemy> Mylist::getlist() {
 	return this->enemies;
 }
 
 void Mylist::filler() {
 	for (int i = 0; i <= 4; i++) {
 		for (int j = 0; j <= 15; j++) {
-			this->enemies.push_back(Enemy(100, WIDTH / 5.f + j * 68.f, HEIGHT * 0.05f + i * 68.f));
+			this->enemies.push_back(Enemy(100, WIDTH / 5.f + j * 68.f, HEIGHT * 0.05f + i * 68.f,(j+1)+(i*16)));
 		}
 	}
 }
-
-
-/*
-list<Enemy> Parameter::changeParams(float velocity) {
-	for (auto& enemy : this->worklist) {
-		enemy.velocityVar = enemy.velocityVar * -1;
-	}
-	return this->worklist;
-}
-
-list<Enemy> Parameter::if_Paramchanged(float velocityVar, bool flag) {
-	if (flag == true)
-	{
-		this->changeParams(velocityVar);
-	}
-	return this->worklist;
-}
-
-
-*/
