@@ -1,3 +1,10 @@
-﻿  SI.cpp
-C:\Users\Dexor\source\repos\main\SI\SI.cpp(55,30): error C2660: "Enemy::draw": funkcja nie przyjmuje 1 argumentów
-C:\Users\Dexor\source\repos\main\SI\Enemy.h(28,15): message : zobacz deklarację „Enemy::draw”
+﻿  Bullet.cpp
+  Enemy.cpp
+  Player.cpp
+  SI.cpp
+  Trwa generowanie kodu
+  6 of 171 functions ( 3.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Zakończono generowanie kodu
+  SI.vcxproj -> C:\Users\Dexor\source\repos\main\x64\Release\SI.exe

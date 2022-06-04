@@ -1,18 +1,17 @@
-#pragma once
+ï»¿#pragma once
 #include "MyShape.h"
 #include <list>
 #include "Global.h"
 
-class Parameter;
 
-class Enemy : public MyShape{
+class Enemy :
+	public MyShape {
 	float x, y;
 	int hp;
 	Vector2f RectSize = { 48,48 };
-	//Czy jeœli list<Enemy> enemies; tutaj bêdzie to dla ka¿dego obiektu bedzie stworzona ta lista
+	float velocityVar{ 2.0f };
 	Vector2f velocity{ velocityVar, 0.f };
 public:
-	float velocityVar{ 4.0f };
 	RectangleShape shape;
 	Enemy(int hp, float x, float y);
 	~Enemy() = default;
@@ -24,9 +23,11 @@ public:
 	float bottom();
 	bool inside(float x, float y);
 	void update();
-	// Odziedziczono za poœrednictwem elementu MyShape
+
+	// Odziedziczono za poÅ“rednictwem elementu MyShape
 	virtual void draw(RenderTarget& target, RenderStates state);
 };
+
 /*
 class Mylist {
 public:
