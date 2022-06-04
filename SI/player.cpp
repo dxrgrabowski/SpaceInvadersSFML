@@ -48,13 +48,6 @@ void Player::update() {
 		velocity.x = 0;
 }
 
-bool Player::inside(float x, float y) {
-	if (this->left() <= x && this->right() >= x && this->bottom() >= y && this->top() <= y)
-		return 1;
-	else
-		return 0;
-}
-
 void Player::draw(RenderTarget& target, RenderStates state) const {
 	target.draw(this->shape, state);
 }

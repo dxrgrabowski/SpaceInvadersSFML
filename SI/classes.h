@@ -31,7 +31,6 @@ public:
 	float right();
 	float top();
 	float bottom();
-	bool inside(float x, float y);
 	void update();
 	//void Start(float &x,float &y);
 };
