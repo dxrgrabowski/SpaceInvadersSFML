@@ -48,6 +48,7 @@ void Player::update() {
 		velocity.x = 0;
 }
 
+
 void Player::draw(RenderTarget& target, RenderStates state) const {
 	target.draw(this->shape, state);
 }

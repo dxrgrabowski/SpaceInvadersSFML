@@ -5,9 +5,9 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-
+#include <string>
 #include "Global.h"
-
+#include "Shield.h"
 using namespace std;
 using namespace sf;
 
@@ -52,5 +52,5 @@ public: //lista pocisków tutaj? list<Bullet> bullets;
 	float top();
 	float bottom();
 	void update();
-	void hit(list<Enemy>& enemies, list<Bullet>& bullets);
+	void hit(list<Enemy>& enemies, vector<Pixel>& oneShield, list<Bullet>& bullets);
 };

@@ -154,6 +154,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Shield.cpp" />
     <ClCompile Include="SI.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="MyShape.h" />
+    <ClInclude Include="Shield.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

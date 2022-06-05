@@ -1,5 +1,6 @@
 #include "classes.h"
 
+
 Bullet::Bullet(float x, float y) {
 	this->x = x;
 	this->y = y;
@@ -37,10 +38,16 @@ void Bullet::draw(RenderTarget& target, RenderStates state) const {
 	target.draw(this->shape, state);
 }
 
-void Bullet::hit(list<Enemy>& enemies, list<Bullet>& bullets) {
+void Bullet::hit(list<Enemy>& enemies, vector<Pixel>& oneShield, list<Bullet>& bullets) {
 	for (auto& enemy : enemies) {
 		if (enemy.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds()))
 			enemy.shape.setFillColor(Color::Transparent);
 			//Lista czy wektor, zamiana elementu z ostatnim i usun¹æ ostatni? zamiast for zakresowego iterator??
 	}
+	for (auto& pixel : oneShield) {
+		if (pixel.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds())) {
+			pixel.shape.setFillColor(Color::Transparent);
+		}
+	}
 }
+           

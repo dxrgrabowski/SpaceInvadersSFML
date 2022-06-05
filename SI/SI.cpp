@@ -3,6 +3,7 @@
 
 #include "classes.h"
 #include "Enemy.h"
+#include "Shield.h"
  //problem
 
 list<Enemy> enemies;
@@ -23,6 +24,8 @@ int main()
     list<Bullet> bullets;
     Player player(100, 0.f, 0.f);
     filler();
+    Shield tarcza(WIDTH/2,HEIGHT/2,1);
+    tarcza.shieldMaker();
     while (window.isOpen())
     {
         Event event;
@@ -39,11 +42,14 @@ int main()
         for (auto& b : bullets) {
             b.update();
             window.draw(b);
-            b.hit(enemies, bullets);
+            b.hit(enemies, tarcza.oneShield, bullets);
         }
         for (auto& enemy : enemies) {
             enemy.update();
             enemy.draw(window, sf::RenderStates::Default);
+        }
+        for (auto& pixel : tarcza.oneShield) {
+            window.draw(pixel);
         }
         window.display();
     }
