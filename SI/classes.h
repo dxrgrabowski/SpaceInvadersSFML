@@ -52,5 +52,5 @@ public: //lista pocisków tutaj? list<Bullet> bullets;
 	float top();
 	float bottom();
 	void update();
-	void hit(list<Enemy>& enemies, vector<Pixel>& oneShield, list<Bullet>& bullets);
+	void hit(vector<Enemy>& enemies, list<Bullet>& bullets, int &killedEnemies);
 };
