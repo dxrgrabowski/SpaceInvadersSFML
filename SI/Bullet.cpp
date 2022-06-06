@@ -2,9 +2,10 @@
 #include "Global.h"
 
 
-Bullet::Bullet(float x, float y) {
+Bullet::Bullet(float x, float y, int ID) {
 	this->x = x;
 	this->y = y;
+	this->ID = ID;
 
 	shape.setPosition(this->x, this->y);
 	shape.setSize(RectSize);
@@ -26,12 +27,7 @@ float Bullet::bottom() {
 
 void Bullet::update() {
 	this->shape.move(this->velocity);
-	if(false) //(this->top() > WIDTH)
-		delete this;			
-	else if(false) //(this->bottom() < 0) 
-		delete this; //a co z usunuiêciem z listy
-	else
-		velocity.y = -velocityVar;
+	velocity.y = -velocityVar;
 }
 
 
@@ -39,21 +35,36 @@ void Bullet::draw(RenderTarget& target, RenderStates state) const {
 	target.draw(this->shape, state);
 }
 
-void Bullet::hit(vector<Enemy>& enemies, list<Bullet>& bullets, int &killedEnemies) {
+void Bullet::hit(vector<Enemy>& enemies,vector<Pixel>& oneShield, vector<Bullet>& bullets, int &killedEnemies, int shotsFired) {
 	for (auto& enemy : enemies) {
-		if (enemy.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds()))
-			killedEnemies++;
+		if (enemy.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds())) {
 			for (auto i = enemies.begin(); i < enemies.end(); i++) {
 				if (i->ID == enemy.ID) {
 					enemies.erase(i);
 					break;
 				}
 			}
-			//Lista czy wektor, zamiana elementu z ostatnim i usun¹æ ostatni? zamiast for zakresowego iterator??
+			killedEnemies = killedEnemies + 1;
+			//auto it = bullets.begin(); 
+			//bullets.erase(it);
+			/*
+			for (auto j = bullets.begin(); j < bullets.end(); j++) {
+				if (j->ID == this->ID) {
+					bullets.erase(j);
+					break;
+				}
+			}
+			*/
+		}
 	}
 	for (auto& pixel : oneShield) {
 		if (pixel.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds())) {
-			pixel.shape.setFillColor(Color::Transparent);
+			for (auto i = oneShield.begin(); i < oneShield.end(); i++) {
+				if (i->ID == pixel.ID) {
+					oneShield.erase(i);
+					break;
+				}
+			}
 		}
 	}
 }

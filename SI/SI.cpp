@@ -7,6 +7,8 @@
 int main()
 {
     int killedEnemies = 0;
+    int shotsFired = 0;
+    /*
     Text enemySpeed;
     Text enemiesRemain;
 
@@ -16,14 +18,15 @@ int main()
     enemiesRemain.setOutlineColor(Color::Magenta);
     enemiesRemain.setPosition(100.f, 100.f);
     
+    */
     Clock clock;
     RenderWindow window{ VideoMode{WIDTH, HEIGHT}, "Space Invaders" };
     window.setFramerateLimit(60);
-    list<Bullet> bullets;
-    enemyList.filler();
-    enemyList.startMoving();
+    vector<Bullet> bullets;
     Player player(100, 0.f, 0.f);
     Mylist enemyList;
+    enemyList.filler();
+    enemyList.startMoving();
     Shield tarcza(WIDTH/2,HEIGHT/2,1);
     tarcza.shieldMaker();
     while (window.isOpen())
@@ -36,14 +39,14 @@ int main()
         }
         window.clear();
 
-        window.draw(enemiesRemain);
+        //window.draw(enemiesRemain);
         player.update();
-        player.shoot(bullets, clock);
+        player.shoot(bullets, clock, shotsFired);
         window.draw(player);
         for (auto& b : bullets) {
             b.update();
             window.draw(b);
-            b.hit(enemyList.enemies, bullets, killedEnemies);
+            b.hit(enemyList.enemies,tarcza.oneShield, bullets, killedEnemies, shotsFired);
         }
         for (auto& enemy : enemyList.enemies) {
             enemy.update(enemyList.enemies);               //podwójna pętla for do korekty

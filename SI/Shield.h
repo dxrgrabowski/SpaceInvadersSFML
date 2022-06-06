@@ -1,3 +1,4 @@
+#pragma once
 #include "classes.h"
 
 class Pixel;
@@ -23,4 +24,5 @@ public:
 	Pixel(float x, float y, int ID);
 	~Pixel() = default;
 };
+
 

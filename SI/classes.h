@@ -26,7 +26,7 @@ public:
 	Player(int hp, float x, float y);
 	~Player() = default;
 	
-	void shoot(list<Bullet> &bullets, Clock &clock);
+	void shoot(vector<Bullet> &bullets, Clock &clock,int &ID);
 	float left();
 	float right();
 	float top();
@@ -34,17 +34,18 @@ public:
 	void update();
 	//void Start(float &x,float &y);
 };
+class Pixel;
 
 class Bullet : public Drawable {
 	float x, y;
-
+	int ID;
 	RectangleShape shape;
 	Vector2f RectSize = { 3,9 };
 	void draw(RenderTarget& target, RenderStates state) const override;
-	const float velocityVar{ 12.f };
+	float velocityVar{ 12.f };
 	Vector2f velocity{ 0.f, velocityVar };
 public: //lista pocisków tutaj? list<Bullet> bullets;
-	Bullet(float x, float y);
+	Bullet(float x, float y, int ID);
 	~Bullet() = default;
 	
 	float left();
@@ -52,5 +53,5 @@ public: //lista pocisków tutaj? list<Bullet> bullets;
 	float top();
 	float bottom();
 	void update();
-	void hit(vector<Enemy>& enemies, list<Bullet>& bullets, int &killedEnemies);
+	void hit(vector<Enemy>& enemies, vector<Pixel>& oneShield, vector<Bullet>& bullets, int &killedEnemies, int ID);
 };

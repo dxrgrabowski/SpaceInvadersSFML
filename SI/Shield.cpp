@@ -15,7 +15,6 @@ Shield::Shield(float x, float y, int ID) {
 	this->y = y;
 	this->ID = ID;
 }
-
 void Shield::shieldMaker() {
 	for (int i = 1; i < 48; i++) {
 		for (int j = 1; j < 96; j++) {

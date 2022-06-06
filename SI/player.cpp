@@ -25,12 +25,12 @@ float Player::top() {
 float Player::bottom() {
 	return this->shape.getPosition().y - shape.getSize().y / 2;
 }
-
-void Player::shoot(list<Bullet> &bullets, Clock &clock){
+void Player::shoot(vector<Bullet> &bullets, Clock &clock, int &ID){
 	Time elapsed1 = clock.getElapsedTime();
 	Time playerCool = seconds(0.3f);
 	if (Keyboard::isKeyPressed(Keyboard::Key::Space) && elapsed1>playerCool) {
-		bullets.push_back(Bullet(this->shape.getPosition().x, this->shape.getPosition().y));
+		bullets.push_back(Bullet(this->shape.getPosition().x, this->shape.getPosition().y,ID));
+		ID=ID+1;
 		clock.restart();
 	}
 
