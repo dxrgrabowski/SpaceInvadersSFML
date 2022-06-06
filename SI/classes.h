@@ -38,13 +38,13 @@ class Pixel;
 
 class Bullet : public Drawable {
 	float x, y;
-	int ID;
 	RectangleShape shape;
 	Vector2f RectSize = { 3,9 };
 	void draw(RenderTarget& target, RenderStates state) const override;
 	float velocityVar{ 12.f };
 	Vector2f velocity{ 0.f, velocityVar };
 public: //lista pocisków tutaj? list<Bullet> bullets;
+	int ID;
 	Bullet(float x, float y, int ID);
 	~Bullet() = default;
 	

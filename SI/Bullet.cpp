@@ -45,19 +45,20 @@ void Bullet::hit(vector<Enemy>& enemies,vector<Pixel>& oneShield, vector<Bullet>
 				}
 			}
 			killedEnemies = killedEnemies + 1;
-			//auto it = bullets.begin(); 
-			//bullets.erase(it);
-			/*
+			
 			for (auto j = bullets.begin(); j < bullets.end(); j++) {
 				if (j->ID == this->ID) {
 					bullets.erase(j);
 					break;
 				}
 			}
-			*/
+			
+
+			/*auto it = next(bullets.begin()); 
+			bullets.erase(it);*/
 		}
 	}
-	for (auto& pixel : oneShield) {
+	/*for (auto& pixel : oneShield) {
 		if (pixel.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds())) {
 			for (auto i = oneShield.begin(); i < oneShield.end(); i++) {
 				if (i->ID == pixel.ID) {
@@ -66,6 +67,6 @@ void Bullet::hit(vector<Enemy>& enemies,vector<Pixel>& oneShield, vector<Bullet>
 				}
 			}
 		}
-	}
+	}*/
 }
            
