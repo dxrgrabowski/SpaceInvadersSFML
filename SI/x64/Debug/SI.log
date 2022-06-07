@@ -1,2 +1,14 @@
 ﻿  Bullet.cpp
+  Player.cpp
+  SI.cpp
+  Shield.cpp
+C:\Users\HP\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Shield.cpp(4,12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\HP\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Shield.cpp(5,12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\HP\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Shield.cpp(8,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\HP\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Shield.cpp(8,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\HP\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Shield.cpp(14,12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\HP\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Shield.cpp(15,12): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\HP\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Shield.cpp(21,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\HP\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Shield.cpp(21,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
   SI.vcxproj -> C:\Users\HP\source\repos\dxrgrabowski\SpaceInvadersSFML\x64\Debug\SI.exe
