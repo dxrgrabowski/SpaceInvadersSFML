@@ -3,7 +3,7 @@
 
 Player::Player(int hp, float x, float y) {
 	this->x = WIDTH/2;
-	this->y = HEIGHT*0.9;
+	this->y = HEIGHT*0.95;
 	this->hp = hp;
 
 	shape.setPosition(this->x, this->y);

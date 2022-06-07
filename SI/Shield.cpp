@@ -16,9 +16,11 @@ Shield::Shield(float x, float y, int ID) {
 	this->ID = ID;
 }
 void Shield::shieldMaker() {
-	for (int i = 1; i < 48; i++) {
-		for (int j = 1; j < 96; j++) {
-			this->oneShield.push_back(Pixel(this->x + (2*j), this->y+(2* i), i*j));
+	for (int k = 0; k < 3; k++) {
+		for (int i = 1; i < 24; i++) {
+			for (int j = 1; j < 50; j++) {
+				this->oneShield.push_back(Pixel(this->x + (5 * j) + 573*k, this->y + (5 * i), i * j));
+			}
 		}
 	}
 }

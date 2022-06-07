@@ -16,7 +16,7 @@ public:
 class Pixel : public Drawable {
 	int x, y;
 	void draw(RenderTarget& target, RenderStates state) const override;
-	Vector2f RectSize = { 2,2 };
+	Vector2f RectSize = { 5,5 };
 
 public:
 	RectangleShape shape;

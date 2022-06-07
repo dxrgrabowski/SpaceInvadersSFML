@@ -36,50 +36,47 @@ void Bullet::draw(RenderTarget& target, RenderStates state) const {
 	target.draw(this->shape, state);
 }
 
-void Bullet::hit(vector<Enemy>& enemies,vector<Pixel>& oneShield, vector<Bullet>& bullets, int &killedEnemies, int shotsFired) {
-	for (auto& enemy : enemies) {
-		if (enemy.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds())) {
-			for (auto i = enemies.begin(); i < enemies.end(); i++) {
-				if (i->ID == enemy.ID) {
-					i = enemies.erase(i);
-					break;
-				}
-			}
-			killedEnemies = killedEnemies + 1;
-			this->ID = 0;
+//void Bullet::hit(vector<Enemy>& enemies,vector<Pixel>& oneShield, vector<Bullet>& bullets, int &killedEnemies, int shotsFired) {
+//	for (auto& enemy : enemies) {
+//		if (enemy.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds())) {
+//			for (auto i = enemies.begin(); i < enemies.end(); i++) {
+//				if (i->ID == enemy.ID) {
+//					i = enemies.erase(i);
+//					break;
+//				}
+//			}
+//			killedEnemies = killedEnemies + 1;
+//			this->ID = 0;
+//
+//		}
+//	auto end = remove_if(bullets.begin(),
+//		bullets.end(),
+//		[](Bullet &bullet) {
+//			return bullet.ID == 0;    
+//		});
+//	bullets.erase(end, bullets.end());
+//	}
+//}
 
-		}
-	auto end = remove_if(bullets.begin(),
-		bullets.end(),
-		[](Bullet &bullet) {
-			return bullet.ID == 0;    
-		});
-	bullets.erase(end, bullets.end());
-	}
-}
-	//spróbowaæ, przeszukiwanie po bulletach zamiast po enemies
-
-	/*for (auto& pixel : oneShield) {
-		if (pixel.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds())) {
-			for (auto i = oneShield.begin(); i < oneShield.end(); i++) {
-				if (i->ID == pixel.ID) {
-					oneShield.erase(i);
-					break;
-				}
-			}
-		}
-	}*/
-}
-
-void BulletVec::bulletCollision(vector<Enemy>& enemies) {
+void BulletVec::bulletCollision(vector<Enemy>& enemies, vector<Pixel>& oneShield) {
 	auto it = this->bullets.begin();
 	while (it != this->bullets.end())
 	{
-		auto hit = std::find_if(enemies.begin(), enemies.end(), [&it](const Enemy &enemy) { return it->shape.getGlobalBounds().intersects(enemy.shape.getGlobalBounds()); });
+		auto enemyhit = std::find_if(enemies.begin(), enemies.end(), [&it](const Enemy &enemy) { return it->shape.getGlobalBounds().intersects(enemy.shape.getGlobalBounds()); });
+		auto pixelhit = std::find_if(oneShield.begin(), oneShield.end(), [&it](const Pixel &pixel) { return it->shape.getGlobalBounds().intersects(pixel.shape.getGlobalBounds()); });
 
-		if (hit != enemies.end())
+		
+
+		if (enemyhit != enemies.end())
 		{
-			enemies.erase(hit);
+			enemies.erase(enemyhit);
+			it = this->bullets.erase(it);
+		}
+		else if (pixelhit != oneShield.end())
+		{
+			auto corrPixel = std::find_if(oneShield.begin(), oneShield.end(), [&it,pixelhit](const Pixel& pixel) { return it->shape.getGlobalBounds().intersects(pixel.shape.getGlobalBounds()); });
+
+			oneShield.erase(pixelhit);
 			it = this->bullets.erase(it);
 		}
 		else

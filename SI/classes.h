@@ -9,6 +9,7 @@
 #include <string>
 #include "Global.h"
 #include "Shield.h"
+
 using namespace std;
 using namespace sf;
 
@@ -35,7 +36,7 @@ public:
 	void update();
 	//void Start(float &x,float &y);
 };
-class Pixel;
+
 
 class Bullet : public Drawable {
 	float x, y;
@@ -54,8 +55,9 @@ public: //lista pocisków tutaj? list<Bullet> bullets;
 	float top();
 	float bottom();
 	void update();
-	void hit(vector<Enemy>& enemies, vector<Pixel>& oneShield, vector<Bullet>& bullets, int &killedEnemies, int ID);
 };
+
+class Pixel;
 
 class BulletVec {
 public:
@@ -63,5 +65,5 @@ public:
 	~BulletVec() = default;
 
 	vector<Bullet> bullets;
-	void bulletCollision(vector<Enemy>& enemies);
+	void bulletCollision(vector<Enemy>& enemies, vector<Pixel>& oneShield);
 };

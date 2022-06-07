@@ -26,8 +26,8 @@ int main()
     BulletVec bulletVec;
     Mylist enemyList;
     enemyList.filler();
-    enemyList.startMoving();
-    Shield tarcza(WIDTH/2,HEIGHT/2,1);
+    //enemyList.startMoving();
+    Shield tarcza(100,HEIGHT/2+230,1);
     tarcza.shieldMaker();
     while (window.isOpen())
     {
@@ -43,7 +43,7 @@ int main()
         player.update();
         player.shoot(bulletVec.bullets, clock, shotsFired);
         window.draw(player);
-        bulletVec.bulletCollision(enemyList.enemies);
+        bulletVec.bulletCollision(enemyList.enemies, tarcza.oneShield);
         for (auto& b : bulletVec.bullets) {
             b.update();
             window.draw(b);
