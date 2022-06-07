@@ -1,18 +1,7 @@
 ﻿  Bullet.cpp
-  Player.cpp
-  SI.cpp
-  Shield.cpp
-C:\Users\Dexor\source\repos\main\SI\Shield.cpp(4,12): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Dexor\source\repos\main\SI\Shield.cpp(5,12): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Dexor\source\repos\main\SI\Shield.cpp(8,33): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\Dexor\source\repos\main\SI\Shield.cpp(8,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\Dexor\source\repos\main\SI\Shield.cpp(14,12): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Dexor\source\repos\main\SI\Shield.cpp(15,12): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-C:\Users\Dexor\source\repos\main\SI\Shield.cpp(21,60): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\Dexor\source\repos\main\SI\Shield.cpp(21,44): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
   Trwa generowanie kodu
-  68 of 237 functions (28.7%) were compiled, the rest were copied from previous compilation.
-    15 functions were new in current compilation
-    16 functions had inline decision re-evaluated but remain unchanged
+  2 of 247 functions ( 0.8%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   SI.vcxproj -> C:\Users\Dexor\source\repos\main\x64\Release\SI.exe

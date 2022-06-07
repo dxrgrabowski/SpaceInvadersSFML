@@ -40,24 +40,24 @@ void Bullet::hit(vector<Enemy>& enemies,vector<Pixel>& oneShield, vector<Bullet>
 		if (enemy.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds())) {
 			for (auto i = enemies.begin(); i < enemies.end(); i++) {
 				if (i->ID == enemy.ID) {
-					enemies.erase(i);
+					i = enemies.erase(i);
 					break;
 				}
 			}
 			killedEnemies = killedEnemies + 1;
-			
-			for (auto j = bullets.begin(); j < bullets.end(); j++) {
-				if (j->ID == this->ID) {
-					bullets.erase(j);
-					break;
-				}
-			}
-			
+			this->ID = 0;
 
-			/*auto it = next(bullets.begin()); 
-			bullets.erase(it);*/
 		}
+	auto end = remove_if(bullets.begin(),
+		bullets.end(),
+		[](Bullet &bullet) {
+			return bullet.ID == 0;    
+		});
+	bullets.erase(end, bullets.end());
 	}
+}
+	//spróbowaæ, przeszukiwanie po bulletach zamiast po enemies
+
 	/*for (auto& pixel : oneShield) {
 		if (pixel.shape.getGlobalBounds().intersects(this->shape.getGlobalBounds())) {
 			for (auto i = oneShield.begin(); i < oneShield.end(); i++) {
@@ -68,5 +68,12 @@ void Bullet::hit(vector<Enemy>& enemies,vector<Pixel>& oneShield, vector<Bullet>
 			}
 		}
 	}*/
-}
-           
+			/*for (auto j = bullets.begin(); j != bullets.end();j++) {
+				if (j->ID == this->ID) {
+					bullets.erase(j--);
+				}
+			}*/
+			
+
+			/*auto it = next(bullets.begin()); 
+			bullets.erase(it);*/

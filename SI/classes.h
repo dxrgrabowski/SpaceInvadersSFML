@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <list>
 #include <vector>
+#include <algorithm>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <string>
