@@ -39,13 +39,13 @@ class Pixel;
 
 class Bullet : public Drawable {
 	float x, y;
-	RectangleShape shape;
+	int ID;
 	Vector2f RectSize = { 3,9 };
 	void draw(RenderTarget& target, RenderStates state) const override;
 	float velocityVar{ 12.f };
 	Vector2f velocity{ 0.f, velocityVar };
 public: //lista pocisków tutaj? list<Bullet> bullets;
-	int ID;
+	RectangleShape shape;
 	Bullet(float x, float y, int ID);
 	~Bullet() = default;
 	
@@ -55,4 +55,13 @@ public: //lista pocisków tutaj? list<Bullet> bullets;
 	float bottom();
 	void update();
 	void hit(vector<Enemy>& enemies, vector<Pixel>& oneShield, vector<Bullet>& bullets, int &killedEnemies, int ID);
+};
+
+class BulletVec {
+public:
+	BulletVec() = default;
+	~BulletVec() = default;
+
+	vector<Bullet> bullets;
+	void bulletCollision(vector<Enemy>& enemies);
 };

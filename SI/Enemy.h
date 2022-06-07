@@ -5,8 +5,7 @@
 
 class Mylist;
 
-class Enemy :
-	public MyShape {
+class Enemy :public MyShape {
 	float x, y;
 	int hp;
 	Vector2f RectSize = { 48,48 };

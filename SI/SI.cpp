@@ -22,8 +22,8 @@ int main()
     Clock clock;
     RenderWindow window{ VideoMode{WIDTH, HEIGHT}, "Space Invaders" };
     window.setFramerateLimit(60);
-    vector<Bullet> bullets;
     Player player(100, 0.f, 0.f);
+    BulletVec bulletVec;
     Mylist enemyList;
     enemyList.filler();
     enemyList.startMoving();
@@ -41,12 +41,13 @@ int main()
 
         //window.draw(enemiesRemain);
         player.update();
-        player.shoot(bullets, clock, shotsFired);
+        player.shoot(bulletVec.bullets, clock, shotsFired);
         window.draw(player);
-        for (auto& b : bullets) {
+        bulletVec.bulletCollision(enemyList.enemies);
+        for (auto& b : bulletVec.bullets) {
             b.update();
             window.draw(b);
-            b.hit(enemyList.enemies,tarcza.oneShield, bullets, killedEnemies, shotsFired);
+            //b.hit(enemyList.enemies,tarcza.oneShield, bulletVec.bullets, killedEnemies, shotsFired);
         }
         for (auto& enemy : enemyList.enemies) {
             enemy.update(enemyList.enemies);               //podwójna pętla for do korekty

@@ -12,6 +12,7 @@ Bullet::Bullet(float x, float y, int ID) {
 	shape.setFillColor(Color::Yellow);
 }
 
+
 float Bullet::left() {
 	return this->shape.getPosition().x;
 }
@@ -68,12 +69,22 @@ void Bullet::hit(vector<Enemy>& enemies,vector<Pixel>& oneShield, vector<Bullet>
 			}
 		}
 	}*/
-			/*for (auto j = bullets.begin(); j != bullets.end();j++) {
-				if (j->ID == this->ID) {
-					bullets.erase(j--);
-				}
-			}*/
-			
+}
 
-			/*auto it = next(bullets.begin()); 
-			bullets.erase(it);*/
+void BulletVec::bulletCollision(vector<Enemy>& enemies) {
+	auto it = this->bullets.begin();
+	while (it != this->bullets.end())
+	{
+		auto hit = std::find_if(enemies.begin(), enemies.end(), [&it](const Enemy &enemy) { return it->shape.getGlobalBounds().intersects(enemy.shape.getGlobalBounds()); });
+
+		if (hit != enemies.end())
+		{
+			enemies.erase(hit);
+			it = this->bullets.erase(it);
+		}
+		else
+			++it;
+	}
+}
+
+           
