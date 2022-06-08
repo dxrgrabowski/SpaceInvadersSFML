@@ -22,7 +22,7 @@ Enemy::Enemy(int hp, float x, float y, eCord ID) {
 	shape.setOrigin(24, 24);
 }
 
-bool Mylist::comp(const Enemy& enemy1, const Enemy& enemy2) {
+bool comp(const Enemy& enemy1, const Enemy& enemy2) {
 	int randColumn = rand() % 15 + 1;
 	if (enemy1.ID.column > randColumn){
 		return enemy1.ID.line < enemy2.ID.line;
@@ -34,13 +34,12 @@ bool Mylist::comp(const Enemy& enemy1, const Enemy& enemy2) {
 
 void Mylist::shoot(vector<Bullet>& bullets, Clock& clock) {
 	Time elapsed2 = clock.getElapsedTime();
-	Time enemyCool = seconds(0.01f);
+	Time enemyCool = seconds(0.1f);
 	
 	if (elapsed2 > enemyCool) {
 		int randColumn = rand() % 15 + 1;
 		auto row = *max_element(this->enemies.begin(), this->enemies.end(), comp);
-		cout << row.ID.column << "|" << row.ID.line << endl;
-		bullets.push_back(Bullet(row.shape.getPosition().x, row.shape.getPosition().y+25,1));
+		bullets.push_back(Bullet(row.shape.getPosition().x, row.shape.getPosition().y+27,1));
 		clock.restart();
 	}
 }
@@ -59,19 +58,28 @@ float Enemy::bottom() {
 }
 
 
-void Enemy::update(vector<Enemy>& enemies) {
+void Enemy::update(vector<Enemy>& enemies, Clock& clock) {
 	this->shape.move(this->velocity);
-	
+	Time elapsed3 = clock.getElapsedTime();
+	Time enemyYCool = seconds(0.3f);
+
+	if (elapsed3 > enemyYCool) {
+		for (auto& enemy : enemies) {
+			enemy.velocity.y = enemy.velocity.y*0.58f;
+
+		}
+		clock.restart();
+	}
 	if (this->left() <= 0) {
 		for (auto& enemy : enemies) {
 			enemy.velocity.x = ES;
-			enemy.shape.setPosition(enemy.shape.getPosition().x, enemy.shape.getPosition().y + enemy.shape.getSize().y);
+			enemy.velocity.y = ACC;
 		}
 	}
 	else if (this->right() >= WIDTH) {
 		for (auto& enemy : enemies) {
 			enemy.velocity.x = -ES;
-			enemy.shape.setPosition(enemy.shape.getPosition().x, enemy.shape.getPosition().y + enemy.shape.getSize().y);
+			enemy.velocity.y = ACC;
 		}
 	}
 	if (this->bottom() <= HEIGHT) {

@@ -38,7 +38,6 @@ void Player::shoot(vector<Bullet> &bullets, Clock &clock){
 	Time playerCool = seconds(0.3f);
 	if (Keyboard::isKeyPressed(Keyboard::Key::Space) && elapsed1>playerCool) {
 		bullets.push_back(Bullet(this->shape.getPosition().x, this->shape.getPosition().y,-1));
-		//ID=ID+1;
 		clock.restart();
 	}
 }

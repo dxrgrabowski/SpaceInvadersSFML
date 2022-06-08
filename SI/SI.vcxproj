@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="FileMenager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Shield.cpp" />
     <ClCompile Include="SI.cpp" />
@@ -161,11 +162,13 @@
   <ItemGroup>
     <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="BulletVec.hpp" />
+    <ClInclude Include="FileMenager.h" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="Global.hpp" />
     <ClInclude Include="MyShape.hpp" />
     <ClInclude Include="Shield.hpp" />
+    <ClInclude Include="Text.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

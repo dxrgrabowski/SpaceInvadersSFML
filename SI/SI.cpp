@@ -4,27 +4,29 @@
 #include "Shield.hpp"
 #include "Enemy.hpp"
 #include "BulletVec.hpp"
+#include "Text.hpp"
+/*
+X Pamięć dynamiczna lista list stos dzewo kolejka
+Pliki odczyt zapis operatory strumieniowe
+Operatory przeciążenie kilka
+X Dziedziczenie polimorfizm
+X Minimum 5 klas bez dziczenia
+X Klasy powiązane jedna używa drugiej
+*/
 
 int main()
 {
-    /*
-    Text enemySpeed;
-    Text enemiesRemain;
-    enemiesRemain.setString("Enemies left: ");
-    enemiesRemain.setCharacterSize(18);
-    enemiesRemain.setFillColor(Color::White);
-    enemiesRemain.setOutlineColor(Color::Magenta);
-    enemiesRemain.setPosition(100.f, 100.f);
-    */
     Clock Pclock;
     Clock Eclock;
+    Clock clock3;
     RenderWindow window{ VideoMode{WIDTH, HEIGHT}, "Space Invaders" };
     window.setFramerateLimit(60);
+    Texts texts;
     Player player(100, 0.f, 0.f);
-    BulletVec bulletVec;
     Mylist enemyList;
+    BulletVec bulletVec;
     enemyList.filler();
-    //enemyList.startMoving();
+    enemyList.startMoving();
     Shield tarcza(100,HEIGHT/2+230);
     tarcza.shieldMaker();
     while (window.isOpen())
@@ -37,7 +39,8 @@ int main()
         }
         window.clear();
 
-        //window.draw(enemiesRemain);
+        texts.textWrite(bulletVec.enemiesCombined);
+        window.draw(texts.enemiesRemain);
         player.update();
         player.shoot(bulletVec.bullets, Pclock);
         window.draw(player);
@@ -47,9 +50,8 @@ int main()
             b.update();
             window.draw(b);
         }
-        
         for (auto& enemy : enemyList.enemies) {
-            enemy.update(enemyList.enemies);               
+            enemy.update(enemyList.enemies, clock3);
             enemy.draw(window, sf::RenderStates::Default);
         }
         

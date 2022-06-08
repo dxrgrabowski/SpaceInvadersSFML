@@ -32,7 +32,7 @@ public:
 	float top();
 	float bottom();
 	bool inside(float x, float y);
-	void update(vector<Enemy>& enemies);
+	void update(vector<Enemy>& enemies, Clock& clock);
 	// Odziedziczono za poœrednictwem elementu MyShape
 	virtual void draw(RenderTarget& target, RenderStates state);
 };
@@ -47,6 +47,6 @@ public:
 	void filler();
 	void startMoving();
 	void shoot(vector<Bullet> &bullets, Clock &clock);
-	bool comp(const Enemy& enemy1, const Enemy& enemy2);
+	//bool one(const Enemy& enemy1, const Enemy& enemy2);
 };
 
