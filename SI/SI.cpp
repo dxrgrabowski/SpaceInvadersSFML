@@ -1,25 +1,23 @@
-﻿#include "classes.h"
-#include "Enemy.h"
-#include "Shield.h"
- //problem
-
+﻿#include "Global.hpp"
+#include "Player.hpp"
+#include "Bullet.hpp"
+#include "Shield.hpp"
+#include "Enemy.hpp"
+#include "BulletVec.hpp"
 
 int main()
 {
-    int killedEnemies = 0;
-    int shotsFired = 0;
     /*
     Text enemySpeed;
     Text enemiesRemain;
-
     enemiesRemain.setString("Enemies left: ");
     enemiesRemain.setCharacterSize(18);
     enemiesRemain.setFillColor(Color::White);
     enemiesRemain.setOutlineColor(Color::Magenta);
     enemiesRemain.setPosition(100.f, 100.f);
-    
     */
-    Clock clock;
+    Clock Pclock;
+    Clock Eclock;
     RenderWindow window{ VideoMode{WIDTH, HEIGHT}, "Space Invaders" };
     window.setFramerateLimit(60);
     Player player(100, 0.f, 0.f);
@@ -27,7 +25,7 @@ int main()
     Mylist enemyList;
     enemyList.filler();
     //enemyList.startMoving();
-    Shield tarcza(100,HEIGHT/2+230,1);
+    Shield tarcza(100,HEIGHT/2+230);
     tarcza.shieldMaker();
     while (window.isOpen())
     {
@@ -41,18 +39,20 @@ int main()
 
         //window.draw(enemiesRemain);
         player.update();
-        player.shoot(bulletVec.bullets, clock, shotsFired);
+        player.shoot(bulletVec.bullets, Pclock);
         window.draw(player);
+        enemyList.shoot(bulletVec.bullets, Eclock);
         bulletVec.bulletCollision(enemyList.enemies, tarcza.oneShield);
         for (auto& b : bulletVec.bullets) {
             b.update();
             window.draw(b);
-            //b.hit(enemyList.enemies,tarcza.oneShield, bulletVec.bullets, killedEnemies, shotsFired);
         }
+        
         for (auto& enemy : enemyList.enemies) {
-            enemy.update(enemyList.enemies);               //podwójna pętla for do korekty
+            enemy.update(enemyList.enemies);               
             enemy.draw(window, sf::RenderStates::Default);
         }
+        
         for (auto& pixel : tarcza.oneShield) {
             window.draw(pixel);
         }

@@ -159,11 +159,13 @@
     <ClCompile Include="Text.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="classes.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Global.h" />
-    <ClInclude Include="MyShape.h" />
-    <ClInclude Include="Shield.h" />
+    <ClInclude Include="Bullet.hpp" />
+    <ClInclude Include="BulletVec.hpp" />
+    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Enemy.hpp" />
+    <ClInclude Include="Global.hpp" />
+    <ClInclude Include="MyShape.hpp" />
+    <ClInclude Include="Shield.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

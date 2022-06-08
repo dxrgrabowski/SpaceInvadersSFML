@@ -1,19 +1,29 @@
 ﻿#pragma once
-#include "MyShape.h"
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 #include <vector>
-#include "Global.h"
+#include "MyShape.hpp"
+#include "Bullet.hpp"
+
+using namespace std;
+using namespace sf;
 
 class Mylist;
+
+struct eCord {
+	int line;
+	int column;
+};
 
 class Enemy :public MyShape {
 	float x, y;
 	int hp;
 	Vector2f RectSize = { 48,48 };
 public:
-	int ID;
+	eCord ID;
 	Vector2f velocity{ 0.f , 0.f };
 	RectangleShape shape;
-	Enemy(int hp, float x, float y, int ID);
+	Enemy(int hp, float x, float y, eCord ID);
 	~Enemy() = default;
 
 	//void shoot(list<EnemyBullet> &bullets);
@@ -27,7 +37,6 @@ public:
 	virtual void draw(RenderTarget& target, RenderStates state);
 };
 
-
 class Mylist {
 public:
 	Mylist() = default;
@@ -37,4 +46,7 @@ public:
 	vector<Enemy> getlist();
 	void filler();
 	void startMoving();
+	void shoot(vector<Bullet> &bullets, Clock &clock);
+	bool comp(const Enemy& enemy1, const Enemy& enemy2);
 };
+

@@ -1,5 +1,12 @@
-#include "classes.h"
-#include "Global.h"
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <vector>
+
+#include "Player.hpp"
+#include "Bullet.hpp"
+#include "Global.hpp"
+
+
 
 Player::Player(int hp, float x, float y) {
 	this->x = WIDTH/2;
@@ -25,15 +32,15 @@ float Player::top() {
 float Player::bottom() {
 	return this->shape.getPosition().y - shape.getSize().y / 2;
 }
-void Player::shoot(vector<Bullet> &bullets, Clock &clock, int &ID){
+
+void Player::shoot(vector<Bullet> &bullets, Clock &clock){
 	Time elapsed1 = clock.getElapsedTime();
 	Time playerCool = seconds(0.3f);
 	if (Keyboard::isKeyPressed(Keyboard::Key::Space) && elapsed1>playerCool) {
-		bullets.push_back(Bullet(this->shape.getPosition().x, this->shape.getPosition().y,ID));
-		ID=ID+1;
+		bullets.push_back(Bullet(this->shape.getPosition().x, this->shape.getPosition().y,-1));
+		//ID=ID+1;
 		clock.restart();
 	}
-
 }
 
 void Player::update() {
