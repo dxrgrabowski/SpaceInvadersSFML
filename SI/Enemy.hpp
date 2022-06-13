@@ -31,8 +31,10 @@ public:
 	float right();
 	float top();
 	float bottom();
-	bool inside(float x, float y);
 	void update(vector<Enemy>& enemies, Clock& clock);
+	
+	bool operator< (Enemy const &e1, Enemy const &e2) const {return}
+	
 	// Odziedziczono za poœrednictwem elementu MyShape
 	virtual void draw(RenderTarget& target, RenderStates state);
 };

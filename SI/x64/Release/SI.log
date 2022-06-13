@@ -1,7 +1,9 @@
 ﻿  Bullet.cpp
-  Trwa generowanie kodu
-  2 of 422 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Zakończono generowanie kodu
-  SI.vcxproj -> C:\Users\Dexor\source\repos\main\x64\Release\SI.exe
+C:\Users\Dexor\source\repos\main\SI\Enemy.hpp(36,58): error C2804: dwuargumentowy "operator <" ma zbyt wiele parametrów
+C:\Users\Dexor\source\repos\main\SI\Enemy.hpp(36,58): error C2333: "Enemy::operator <": błąd w deklaracji funkcji; pomijanie treści funkcji
+  Enemy.cpp
+C:\Users\Dexor\source\repos\main\SI\Enemy.hpp(36,58): error C2804: dwuargumentowy "operator <" ma zbyt wiele parametrów
+C:\Users\Dexor\source\repos\main\SI\Enemy.hpp(36,58): error C2333: "Enemy::operator <": błąd w deklaracji funkcji; pomijanie treści funkcji
+  SI.cpp
+C:\Users\Dexor\source\repos\main\SI\Enemy.hpp(36,58): error C2804: dwuargumentowy "operator <" ma zbyt wiele parametrów
+C:\Users\Dexor\source\repos\main\SI\Enemy.hpp(36,58): error C2333: "Enemy::operator <": błąd w deklaracji funkcji; pomijanie treści funkcji
