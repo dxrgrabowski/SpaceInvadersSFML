@@ -79,11 +79,11 @@ bool comp(const Enemy& enemy1, const Enemy& enemy2) {
 	int randColumn = rand() % 15 + 1;
 	
 	if (enemy1.ID.column > randColumn){
-		return enemy1.ID.line < enemy2.ID.line;
+		return enemy1 < enemy2;
 	}
 	
 	if (enemy2.ID.column > randColumn) {
-		return enemy1.ID.line < enemy2.ID.line;	
+		return enemy1 < enemy2;	
 	}
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "Enemy.hpp"
 #include "Shield.hpp"
+#include "Player.hpp"
 
 class BulletVec {
 public:
@@ -9,5 +10,5 @@ public:
 	
 	int enemiesCombined = enemyRow * enemyColumn;
 	vector<Bullet> bullets;
-	void bulletCollision(vector<Enemy>& enemies, vector<Pixel>& oneShield);
+	void bulletCollision(vector<Enemy>& enemies, vector<Pixel>& oneShield, Player &player);
 };

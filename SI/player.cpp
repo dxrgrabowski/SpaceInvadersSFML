@@ -35,12 +35,12 @@ float Player::bottom() {
 
 void Player::shoot(vector<Bullet> &bullets, Clock &clock){
 	Time elapsed1 = clock.getElapsedTime();
-	Time playerCool = seconds(0.003f);
+	Time playerCool = seconds(0.3f);
 	Time recoil1 = seconds(0.45f);
 	Time recoil2 = seconds(0.59f);
 	float factor = 0;
 	if (Keyboard::isKeyPressed(Keyboard::Key::Space) && elapsed1>playerCool) {
-		bullets.push_back(Bullet(this->shape.getPosition().x, this->shape.getPosition().y,-1));
+		bullets.push_back(Bullet(this->shape.getPosition().x, this->shape.getPosition().y -60,-1));
 		Clock recoilClock;
 		this->y = this->y + 40 * factor;
 		

@@ -40,14 +40,20 @@ void Bullet::draw(RenderTarget& target, RenderStates state) const {
 }
 
 
-void BulletVec::bulletCollision(vector<Enemy>& enemies, vector<Pixel>& oneShield) {
+void BulletVec::bulletCollision(vector<Enemy>& enemies, vector<Pixel>& oneShield, Player &player) {
 	
 	auto it = this->bullets.begin();
 
 	while (it != this->bullets.end())
 	{
-		auto enemyhit = find_if(enemies.begin(), enemies.end(), [&it](const Enemy& enemy) { return it->shape.getGlobalBounds().intersects(enemy.shape.getGlobalBounds()); });
-		auto pixelhit = find_if(oneShield.begin(), oneShield.end(), [&it](const Pixel& pixel) { return it->shape.getGlobalBounds().intersects(pixel.shape.getGlobalBounds()); });
+		auto enemyhit = find_if(enemies.begin(), enemies.end(), [&it](const Enemy& enemy) { 
+			return it->shape.getGlobalBounds().intersects(enemy.shape.getGlobalBounds()); });
+
+		auto pixelhit = find_if(oneShield.begin(), oneShield.end(), [&it](const Pixel& pixel) { 
+			return it->shape.getGlobalBounds().intersects(pixel.shape.getGlobalBounds()); });
+
+		auto playerhit = find_if(oneShield.begin(), oneShield.end(), [&it](const Pixel& pixel) { 
+			return it->shape.getGlobalBounds().intersects(pixel.shape.getGlobalBounds()); });
 
 		if (enemyhit != enemies.end())
 		{
@@ -65,6 +71,17 @@ void BulletVec::bulletCollision(vector<Enemy>& enemies, vector<Pixel>& oneShield
 		}
 		else if (it->y > HEIGHT) {
 			it = this->bullets.erase(it);
+		}
+		else if (it->shape.getGlobalBounds().intersects(player.shape.getGlobalBounds())) {
+			
+			if (player.hp > 0) {
+				player.hp = player.hp - 25;
+				it = this->bullets.erase(it);
+			}
+			else{
+				player.shape.setFillColor(Color::Transparent);
+				it = this->bullets.erase(it);
+			}
 		}
 		else
 			++it;

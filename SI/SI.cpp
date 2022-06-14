@@ -25,7 +25,7 @@ int main()
     Clock clock3;
     
     Texts texts;
-    Player player(100, 0.f, 0.f);
+    Player player(PLAYERHP, 0.f, 0.f);
     Mylist enemyList;
     BulletVec bulletVec;
     FileMenager file;
@@ -59,7 +59,7 @@ int main()
         window.draw(player);
 
         enemyList.shoot(bulletVec.bullets, Eclock);
-        bulletVec.bulletCollision(enemyList.enemies, tarcza.oneShield);
+        bulletVec.bulletCollision(enemyList.enemies, tarcza.oneShield, player);
         
         for (auto& b : bulletVec.bullets) {
             b.update();
