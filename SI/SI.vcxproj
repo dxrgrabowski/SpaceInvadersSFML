@@ -163,6 +163,7 @@
     <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="BulletVec.hpp" />
     <ClInclude Include="FileMenager.hpp" />
+    <ClInclude Include="fileQueue.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="Global.hpp" />

@@ -40,14 +40,14 @@ void Player::shoot(vector<Bullet> &bullets, Clock &clock){
 	Time recoil2 = seconds(0.59f);
 	float factor = 0;
 	if (Keyboard::isKeyPressed(Keyboard::Key::Space) && elapsed1>playerCool) {
-		bullets.push_back(Bullet(this->shape.getPosition().x, this->shape.getPosition().y -60,-1));
+		bullets.push_back(Bullet(this->shape.getPosition().x, this->shape.getPosition().y -46,-1));
 		Clock recoilClock;
 		this->y = this->y + 40 * factor;
 		
 		//while (elapsed1 < recoil2) {
-		//	Time elapsed2 = recoilClock.getElapsedTime();
+		//	time elapsed2 = recoilclock.getelapsedtime();
 		//	//cout << this->x << " | " << this->y << endl;
-		//	cout << elapsed2.asSeconds() << endl;
+		//	cout << elapsed2.asseconds() << endl;
 
 		//		if (elapsed2 > seconds(0.1f) && factor != 1){
 		//			factor = 1;
@@ -59,8 +59,7 @@ void Player::shoot(vector<Bullet> &bullets, Clock &clock){
 		//		}
 		//		else if (elapsed2 > seconds(0.25f) && factor != 0) {
 		//			factor = 0;
-		//		}
-		//		
+		//		}	
 		//}
 		clock.restart();
 	}

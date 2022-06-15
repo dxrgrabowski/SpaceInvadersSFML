@@ -6,10 +6,11 @@
 #include "BulletVec.hpp"
 #include "Text.hpp"
 #include "FileMenager.hpp"
+
 /*
 X Pamięć dynamiczna lista list stos dzewo kolejka
 x Pliki odczyt zapis operatory strumieniowe
-Operatory przeciążenie kilka
+X Operatory przeciążenie kilka
 X Dziedziczenie polimorfizm
 X Minimum 5 klas bez dziczenia
 X Klasy powiązane jedna używa drugiej
@@ -24,6 +25,7 @@ int main()
     Clock Eclock;
     Clock clock3;
     
+    fifo queue;
     Texts texts;
     Player player(PLAYERHP, 0.f, 0.f);
     Mylist enemyList;
@@ -32,10 +34,12 @@ int main()
     Shield tarcza(100,HEIGHT/2+230);
     Event event;
 
-    file.fileLoader();
+    file.fileLoader(queue);
     enemyList.filler();
     enemyList.startMoving();
     tarcza.shieldMaker();
+
+
 
     while (window.isOpen())
     {
@@ -45,8 +49,7 @@ int main()
         }
         
         window.clear();
-
-        file.fileMaker();
+        
         file.dataLoad(bulletVec.enemiesCombined);
 
         texts.textWrite(bulletVec.enemiesCombined);
@@ -78,5 +81,8 @@ int main()
         window.display();
     
     }
+    
+
+    file.fileMaker(queue);
     return 0;
 }

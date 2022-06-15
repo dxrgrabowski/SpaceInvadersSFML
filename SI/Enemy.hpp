@@ -35,6 +35,8 @@ public:
 
 	bool operator<(Enemy const& e1) const { return ID.line < e1.ID.line; }
 	
+	bool operator==(Enemy const& e1) const { return ID.line == e1.ID.line; }
+	
 	// Odziedziczono za poœrednictwem elementu MyShape
 	virtual void draw(RenderTarget& target, RenderStates state);
 };

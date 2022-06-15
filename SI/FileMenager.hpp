@@ -5,6 +5,9 @@
 #include <sstream>
 #include <windows.h>
 #include <winbase.h>
+
+#include "fileQueue.hpp"
+
 using namespace std;
 
 class FileMenager {
@@ -17,13 +20,22 @@ public:
 	FileMenager() = default;
 	~FileMenager() = default;
 	
+	int getTotalKilled() {
+		int sum;
+
+		if (this->fileData > 0)
+			return sum = this->fileData + this->killedEnemies;
+		else
+			return sum = this->killedEnemies;
+	}
+
 	void dataLoad(int a) {
 		
 		this->killedEnemies = -(a-80);
 	
 	}
 
-	void fileLoader() {
+	void fileLoader(fifo &queue) {
 		
 		int it = 0;
 
@@ -36,28 +48,22 @@ public:
 		ifstream input_file("config.txt");
 		
 		while (getline(input_file, one_line)) {
-	
-			ss << one_line;
-			ss >> trash >> trash >> trash >> trash >> downloadedD;
+			queue.push_back(one_line);
+			
+			/*ss << one_line;
+			ss >> trash >> trash >> trash >> trash >> downloadedD;*/
+			
 		}
+		
 
 		if (downloadedD.size() > 1)
 			this->fileData = stoi(downloadedD);
 		else
 			cerr << "config.txt is empty";
 	}
-	int getTotalKilled() {
-		int sum;
-
-		if (this->fileData > 0)
-			return sum = this->fileData + this->killedEnemies;
-		else
-			return sum = this->killedEnemies;
-	}
-	void fileMaker() {
+	void fileMaker(fifo& queue) {
 		
 		int sum;
-		
 		if (this->fileData > 0)
 			sum = this->fileData + this->killedEnemies;
 		else
@@ -70,7 +76,11 @@ public:
 		output_file.open("config.txt");
 		
 		if (output_file.is_open()) {
-			output_file << st.wHour+2 << ":" << st.wMinute << " | " << st.wDay << "." << st.wMonth << "." << st.wYear << " = " << sum << endl;
+			while (queue.end - queue.begin>1) {
+				output_file << queue.getFirst()<< endl;
+			}
+			output_file << st.wHour + 2 << ":" << st.wMinute << " | " << st.wDay << "." << st.wMonth << "." << st.wYear << " = " << this->killedEnemies <<endl;
+			output_file << st.wHour + 2 << ":" << st.wMinute << " | " << st.wDay << "." << st.wMonth << "." << st.wYear << " = " << this->killedEnemies+100<<endl;
 			output_file.close();
 		}
 	}

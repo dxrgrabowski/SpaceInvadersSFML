@@ -36,6 +36,7 @@ void Bullet::update() {
 
 
 void Bullet::draw(RenderTarget& target, RenderStates state) const {
+
 	target.draw(this->shape, state);
 }
 
