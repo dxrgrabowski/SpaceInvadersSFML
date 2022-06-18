@@ -48,13 +48,16 @@ void BulletVec::bulletCollision(vector<Enemy>& enemies, vector<Pixel>& oneShield
 
 	while (it != this->bullets.end())
 	{
+		if (it->y < 0) {
+			it = this->bullets.erase(it);
+		}
+		if (it->y > HEIGHT) {
+			it = this->bullets.erase(it);
+		}
 		auto enemyhit = find_if(enemies.begin(), enemies.end(), [&it](const Enemy& enemy) {
 			return it->shape.getGlobalBounds().intersects(enemy.shape.getGlobalBounds()); });
 
 		auto pixelhit = find_if(oneShield.begin(), oneShield.end(), [&it](const Pixel& pixel) {
-			return it->shape.getGlobalBounds().intersects(pixel.shape.getGlobalBounds()); });
-
-		auto playerhit = find_if(oneShield.begin(), oneShield.end(), [&it](const Pixel& pixel) {
 			return it->shape.getGlobalBounds().intersects(pixel.shape.getGlobalBounds()); });
 
 		if (enemyhit != enemies.end())
@@ -66,12 +69,6 @@ void BulletVec::bulletCollision(vector<Enemy>& enemies, vector<Pixel>& oneShield
 		else if (pixelhit != oneShield.end())
 		{
 			oneShield.erase(pixelhit);
-			it = this->bullets.erase(it);
-		}
-		else if (it->y < 0) {
-			it = this->bullets.erase(it);
-		}
-		else if (it->y > HEIGHT) {
 			it = this->bullets.erase(it);
 		}
 		else if (it->shape.getGlobalBounds().intersects(player.shape.getGlobalBounds())) {

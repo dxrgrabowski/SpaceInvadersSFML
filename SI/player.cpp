@@ -57,7 +57,7 @@ void Player::update() {
 		this->velocity.x = -velocityVar;
 		this->x += -velocityVar;
 	}
-	else if ((Keyboard::isKeyPressed(Keyboard::Key::Right) || Keyboard::isKeyPressed(Keyboard::Key::D)) && this->right() < WIDTH) {
+	if ((Keyboard::isKeyPressed(Keyboard::Key::Right) || Keyboard::isKeyPressed(Keyboard::Key::D)) && this->right() < WIDTH) {
 		this->velocity.x = velocityVar;
 		this->x += velocityVar;
 	}

@@ -102,14 +102,14 @@ public:
 		int size = 22;
 		if (hp < 60 && hp>30)
 			playerHPtext.setFillColor(Color(199, 127, 18));
-		else if (hp < 30 && hp>0)
+		else if (hp < 30 && hp>1)
 			playerHPtext.setFillColor(Color::Red);
-		else
-			playerHPtext.setFillColor(Color(80, 173, 40));
-		if (hp <= 0) {
+		else if (hp <= 0) {
 			playerHPtext.setFillColor(Color(117, 9, 9));
 			s = "You are dead!";
 		}
+		else
+			playerHPtext.setFillColor(Color(80, 173, 40));
 
 		Texts::textScheme(this->playerHPtext, s, size, pos);
 	}

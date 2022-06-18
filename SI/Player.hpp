@@ -8,7 +8,6 @@ using namespace std;
 using namespace sf;
 
 class Player : public MyShape {
-
 	float x, y;
 	Vector2f RectSize = { 48,48 };
 	const float velocityVar{ 7.0f };
@@ -17,6 +16,7 @@ public:
 	Player(int hp, float x, float y);
 	~Player() = default;
 	
+	bool isPlayerDead=0;
 	int hp;
 	RectangleShape shape;
 
