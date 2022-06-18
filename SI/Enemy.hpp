@@ -26,7 +26,6 @@ public:
 	Enemy(int hp, float x, float y, eCord ID);
 	~Enemy() = default;
 
-	//void shoot(list<EnemyBullet> &bullets);
 	float left();
 	float right();
 	float top();
@@ -34,9 +33,13 @@ public:
 	void update(vector<Enemy>& enemies, Clock& clock);
 
 	bool operator<(Enemy const& e1) const { return ID.line < e1.ID.line; }
-	
+
 	bool operator==(Enemy const& e1) const { return ID.line == e1.ID.line; }
-	
+
+	int operator-(int& e1) const { return ID.column - e1; }
+
+	int operator+(int& e1) const { return ID.column + e1; }
+
 	// Odziedziczono za poœrednictwem elementu MyShape
 	virtual void draw(RenderTarget& target, RenderStates state);
 };
@@ -45,12 +48,11 @@ class Mylist {
 public:
 	Mylist() = default;
 	~Mylist() = default;
-	
+
 	vector<Enemy> enemies;
-	vector<Enemy> getlist();
+
 	void filler();
 	void startMoving();
-	void shoot(vector<Bullet> &bullets, Clock &clock);
-	//bool one(const Enemy& enemy1, const Enemy& enemy2);
+	void shoot(vector<Bullet>& bullets, Clock& clock);
 };
 

@@ -23,7 +23,7 @@ void Shield::shieldMaker() {
 		for (int i = 1; i < shieldLines; i++) {
 			for (int j = 1; j < shieldColumns; j++) {
 				pCord ID = { k,i,j };
-				this->oneShield.push_back(Pixel(this->x + (shieldPixelX * j) + 573 * k, this->y + (shieldPixelY * i), ID));
+				this->oneShield.push_back(Pixel(this->x + (shieldPixelX * j * pixelColumnSpaces) + 573 * k, this->y + (shieldPixelY * i * pixelRowSpaces), ID));
 			}
 		}
 	}

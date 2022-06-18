@@ -10,7 +10,7 @@ class fifo {
 public:
 	fifo() {
 		this->begin = 0;
-		this->end = 0; 
+		this->end = 0;
 		this->oneElement = 1;
 	}
 	~fifo()
@@ -24,9 +24,9 @@ public:
 		if (!oneElement)
 			delete b;
 	}
-	
+
 	unsigned int size() { return end - begin; }//liczba elementów w kolejce
-	
+
 	void push_back(string x)//dodanie elementu na end kolejki
 	{
 		if (oneElement)//jesli pierwszy element wrzucamy do kolejki
@@ -46,26 +46,28 @@ public:
 		}
 		end++;
 	}
-	
-	string getFirst()
+
+	string getFirst()//zwracanie elementu z kolejki i ustawienie wsk nastêpnego el
 	{
-		
+
 		//if(end - begin>1){}
-			el = b;
-			b = b->nastepny; //przejscie na nastêpny element kolejki
-			++begin;
-			return b->element;
+		el = b;
+		b = b->nastepny; //przejscie na nastêpny element kolejki
+		++begin;
+		return b->element;
 	}
 
-	
+
 	unsigned int begin, end; // index
-	
+
 private:
 	bool oneElement; // czy w kolejce cos ju¿ siê pojawi³o
-	
+
 	struct oneline {
 		string element;
-		oneline* nastepny;
+		oneline* nastepny = nullptr;
 	};
-	oneline* b, * e, * el; //begin, end, element
+	oneline* b = nullptr;
+	oneline* e = nullptr;
+	oneline* el = nullptr;
 };

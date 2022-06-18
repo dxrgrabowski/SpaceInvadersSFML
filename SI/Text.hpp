@@ -34,6 +34,6 @@ public:
 		enemiesTotal.setCharacterSize(18);
 		enemiesTotal.setFillColor(Color::White);
 		enemiesTotal.setOutlineColor(Color::Magenta);
-		enemiesTotal.setPosition(WIDTH*0.7, 10.f);
+		enemiesTotal.setPosition(WIDTH * 0.7, 10.f);
 	}
 };

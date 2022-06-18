@@ -64,7 +64,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="config.txt">
+    <Text Include="sessions.txt">
+      <Filter>Pliki zasobów</Filter>
+    </Text>
+    <Text Include="record.txt">
       <Filter>Pliki zasobów</Filter>
     </Text>
   </ItemGroup>

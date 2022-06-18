@@ -39,30 +39,33 @@ float Enemy::bottom() {
 
 
 void Enemy::update(vector<Enemy>& enemies, Clock& clock) {
-	
+
 	this->shape.move(this->velocity);
-	
+
 	Time elapsed3 = clock.getElapsedTime();
 	Time enemyYCool = seconds(0.3f);
 
 	if (elapsed3 > enemyYCool) {
 		for (auto& enemy : enemies) {
-			enemy.velocity.y = enemy.velocity.y*0.58f;
+			enemy.velocity.y = enemy.velocity.y * 0.58f;
 		}
 		clock.restart();
 	}
+
 	if (this->left() <= 0) {
 		for (auto& enemy : enemies) {
 			enemy.velocity.x = ES;
 			enemy.velocity.y = ACC;
 		}
 	}
+
 	else if (this->right() >= WIDTH) {
 		for (auto& enemy : enemies) {
 			enemy.velocity.x = -ES;
 			enemy.velocity.y = ACC;
 		}
 	}
+
 	if (this->bottom() <= HEIGHT) {
 		//KONIEC
 	}
@@ -75,44 +78,41 @@ void Enemy::draw(RenderTarget& target, RenderStates state) {
 
 
 bool comp(const Enemy& enemy1, const Enemy& enemy2) {
-	
+
 	int randColumn = rand() % 15 + 1;
-	
-	if (enemy1.ID.column > randColumn){
+
+	if (enemy1 - randColumn > 0) {
 		return enemy1 < enemy2;
 	}
-	
-	if (enemy2.ID.column > randColumn) {
-		return enemy1 < enemy2;	
+
+	if (enemy2 - randColumn > 0) {
+		return enemy1 < enemy2;
 	}
+	else
+		return false;
 }
 
 
 void Mylist::shoot(vector<Bullet>& bullets, Clock& clock) {
-	
+
 	Time elapsed2 = clock.getElapsedTime();
 	Time enemyCool = seconds(0.1f);
-	
+
 	if (elapsed2 > enemyCool && !this->enemies.empty()) {
-		
+
 		int randColumn = rand() % 15 + 1;
 		auto row = *max_element(this->enemies.begin(), this->enemies.end(), comp);
-		
-		bullets.push_back(Bullet(row.shape.getPosition().x, row.shape.getPosition().y+27,1));
+
+		bullets.push_back(Bullet(row.shape.getPosition().x, row.shape.getPosition().y + 27, 1));
 		clock.restart();
 	}
 }
 
 
-vector<Enemy> Mylist::getlist() {
-	return this->enemies;
-}
-
-
 void Mylist::startMoving() {
-	
+
 	for (auto& enemy : this->enemies) {
-		
+
 		enemy.velocity.x = ES;
 		enemy.shape.move(enemy.velocity);
 	}
@@ -120,13 +120,13 @@ void Mylist::startMoving() {
 
 
 void Mylist::filler() {
-	
+
 	for (int i = 1; i <= enemyRow; i++) {
-		
+
 		for (int j = 1; j <= enemyColumn; j++) {
-			
+
 			eCord ID = { i,j };
-			this->enemies.push_back(Enemy(100, WIDTH / 5.f + j * 68.f, HEIGHT * 0.05f + i * 68.f,ID));
+			this->enemies.push_back(Enemy(100, WIDTH / 5.f + j * enemyColumnSpaces, HEIGHT * 0.05f + i * enemyRowSpaces, ID));
 		}
 	}
 }

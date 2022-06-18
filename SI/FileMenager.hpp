@@ -12,14 +12,14 @@ using namespace std;
 
 class FileMenager {
 
-	int killedEnemies=0;
-	int fileData=0;
+	int killedEnemies = 0;
+	int fileData = 0;
 
 public:
-	
+
 	FileMenager() = default;
 	~FileMenager() = default;
-	
+
 	int getTotalKilled() {
 		int sum;
 
@@ -30,39 +30,42 @@ public:
 	}
 
 	void dataLoad(int a) {
-		
-		this->killedEnemies = -(a-80);
-	
+
+		this->killedEnemies = -(a - 80);
+
 	}
 
-	void fileLoader(fifo &queue) {
-		
+	void fileLoader(fifo& queue) {
+
 		int it = 0;
 
 		string downloadedD;
-		string one_line;
+		string sessionLine, recordLine;
 
 		string trash;
-		
+
 		stringstream ss;
-		ifstream input_file("config.txt");
-		
-		while (getline(input_file, one_line)) {
-			queue.push_back(one_line);
-			
-			/*ss << one_line;
-			ss >> trash >> trash >> trash >> trash >> downloadedD;*/
-			
+		ifstream input_file("sessions.txt");
+		ifstream input_record_file("record.txt");
+
+		while (getline(input_file, sessionLine)) {
+			queue.push_back(sessionLine);
 		}
-		
+
+		while (getline(input_record_file, recordLine)) {
+
+			ss << recordLine;
+			ss >> downloadedD;
+
+		}
 
 		if (downloadedD.size() > 1)
 			this->fileData = stoi(downloadedD);
 		else
-			cerr << "config.txt is empty";
+			cerr << "record load failed";
 	}
 	void fileMaker(fifo& queue) {
-		
+
 		int sum;
 		if (this->fileData > 0)
 			sum = this->fileData + this->killedEnemies;
@@ -73,15 +76,28 @@ public:
 		GetSystemTime(&st);
 
 		ofstream output_file;
-		output_file.open("config.txt");
-		
+		output_file.open("sessions.txt");
+
 		if (output_file.is_open()) {
-			while (queue.end - queue.begin>1) {
-				output_file << queue.getFirst()<< endl;
+			while (queue.end - queue.begin > 0) {
+				output_file << queue.getFirst() << endl;
 			}
-			output_file << st.wHour + 2 << ":" << st.wMinute << " | " << st.wDay << "." << st.wMonth << "." << st.wYear << " = " << this->killedEnemies <<endl;
-			output_file << st.wHour + 2 << ":" << st.wMinute << " | " << st.wDay << "." << st.wMonth << "." << st.wYear << " = " << this->killedEnemies+100<<endl;
+
+			output_file << st.wHour + 2 << ":" << st.wMinute << " | " << st.wDay << "."
+				<< st.wMonth << "." << st.wYear << " = " << this->killedEnemies << endl;
+
 			output_file.close();
+		}
+
+		ofstream record_file;
+		record_file.open("record.txt");
+
+		if (record_file.is_open()) {
+
+
+			record_file << sum << endl;
+
+			record_file.close();
 		}
 	}
 };

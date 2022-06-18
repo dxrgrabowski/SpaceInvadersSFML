@@ -7,24 +7,25 @@ using namespace std;
 using namespace sf;
 
 class Player : public Drawable {
-	
+
 	float x, y;
-	Vector2f RectSize={48,48};
+	Vector2f RectSize = { 48,48 };
 	void draw(RenderTarget& target, RenderStates state) const override;
-	const float velocityVar{7.0f};
-	Vector2f velocity{velocityVar, 0.f };
+	const float velocityVar{ 7.0f };
+	Vector2f velocity{ velocityVar, 0.f };
 public:
-	int hp;
-	RectangleShape shape;
-	
 	Player(int hp, float x, float y);
 	~Player() = default;
 	
-	void shoot(vector<Bullet> &bullets, Clock &clock);
+	int hp;
+	RectangleShape shape;
+
+
+	void shoot(vector<Bullet>& bullets, Clock& clock);
+	void update();
+	
 	float left();
 	float right();
 	float top();
 	float bottom();
-	void update();
-	//void Start(float &x,float &y);
 };
