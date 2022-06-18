@@ -7,5 +7,9 @@ using namespace sf;
 
 class MyShape{
 public:
-	virtual void draw(RenderTarget& target, RenderStates state)=0;
+	virtual ~MyShape() {}
+	
+	friend class RenderTarget;
+
+	virtual void draw(RenderTarget& target, RenderStates states) const = 0;
 };

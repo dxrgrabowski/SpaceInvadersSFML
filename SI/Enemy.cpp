@@ -72,8 +72,8 @@ void Enemy::update(vector<Enemy>& enemies, Clock& clock) {
 }
 
 
-void Enemy::draw(RenderTarget& target, RenderStates state) {
-	target.draw(this->shape, sf::RenderStates::Default);
+void Enemy::draw(RenderTarget& target, RenderStates state) const {
+	target.draw(this->shape, state);
 }
 
 

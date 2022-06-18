@@ -3,23 +3,45 @@
 #include <SFML/Window.hpp>
 #include "BulletVec.hpp"
 
+class PlayerHp;
+
 class Texts {
+
+
+protected:
+	Font font;
+	Text enemiesRemain;
+
+	void textScheme(Text& t, string& s, int& size, Vector2f& pos) {
+		if (!this->font.loadFromFile("Fonts/font.ttf"))
+			throw("Couldn't open font");
+		t.setOutlineColor(Color::White);
+		t.setOutlineThickness(2);
+		t.setFont(this->font);
+		t.setCharacterSize(size);
+		t.setPosition(pos);
+		t.setString(s);
+	}
+
 public:
 	Texts() = default;
 	~Texts() = default;
+};
 
-	Font font;
+class LeftXT : protected Texts {
+
+	friend class Texts;
 	Text enemiesRemain;
-	Text enemiesTotal;
-	Text playerHPtext;
 
-	void textWrite(int enemiesCombined) {
-		if (!this->font.loadFromFile("Fonts/font.ttf"))
-			throw("Couldn't open font");
+public:
+	LeftXT() = default;
+	~LeftXT() = default;
 
-		enemiesRemain.setFont(this->font);
-		string enLeft = "Enemies left: " + to_string(enemiesCombined);
-		enemiesRemain.setOutlineThickness(2);
+
+	void drawTXT(int enemiesCombined) {
+		string s = "Enemies total killed: " + to_string(enemiesCombined);
+		Vector2f pos = { 10.f, 10.f };
+		int size = 18;
 
 		if (enemiesCombined < 65 && enemiesCombined>40)
 			enemiesRemain.setFillColor(Color(199, 127, 18));
@@ -29,49 +51,70 @@ public:
 			enemiesRemain.setFillColor(Color(80, 173, 40));
 		if (enemiesCombined == 0) {
 			enemiesRemain.setFillColor(Color(18, 169, 199));
-			enLeft = "All enemies Killed";
+			s = "All enemies Killed";
 		}
 
-		enemiesRemain.setString(enLeft);
-		enemiesRemain.setCharacterSize(18);
-		enemiesRemain.setOutlineColor(Color::White);
-		enemiesRemain.setPosition(10.f, 10.f);
+		Texts::textScheme(this->enemiesRemain, s, size, pos);
 	}
-	void enemiesKilledTotal(int total) {
-		if (!this->font.loadFromFile("Fonts/font.ttf"))
-			throw("Couldn't open font");
 
-		enemiesTotal.setFont(this->font);
-		string enLeft = "Enemies total killed: " + to_string(total);
-		enemiesTotal.setOutlineColor(Color::White);
-		enemiesTotal.setOutlineThickness(2);
-		enemiesTotal.setString(enLeft);
-		enemiesTotal.setCharacterSize(18);
+	Text getTXT() {
+		return this->enemiesRemain;
+	}
+};
+
+class RightTXT : protected Texts {
+
+	friend class Texts;
+	Text enemiesTotal;
+
+public:
+	RightTXT() = default;
+	~RightTXT() = default;
+
+
+	void drawTXT(int total) {
+		string s = "Enemies total killed: " + to_string(total);
+		Vector2f pos = { WIDTH * 0.7, 10.f };
+		int size = 18;
+
+		Texts::textScheme(this->enemiesTotal, s, size, pos);
 		enemiesTotal.setFillColor(Color(122, 118, 232));
-		enemiesTotal.setPosition(WIDTH * 0.7, 10.f);
 	}
 
-	void playerHP(int hp) {
-		if (!this->font.loadFromFile("Fonts/font.ttf"))
-			throw("Couldn't open font");
+	Text getTXT() {
+		return this->enemiesTotal;
+	}
+};
 
-		playerHPtext.setFont(this->font);
-		string enLeft = "HP: " + to_string(hp);
-		playerHPtext.setOutlineColor(Color::White);
-		playerHPtext.setOutlineThickness(2);
+class PlayerHp : protected Texts {
 
+	friend class Texts;
+	Text playerHPtext;
+
+public:
+	PlayerHp() = default;
+	~PlayerHp() = default;
+
+
+	void drawTXT(int hp) {
+		string s = "HP: " + to_string(hp);
+		Vector2f pos = { WIDTH * 0.45f, 11.f };
+		int size = 22;
 		if (hp < 60 && hp>30)
 			playerHPtext.setFillColor(Color(199, 127, 18));
 		else if (hp < 30 && hp>0)
 			playerHPtext.setFillColor(Color::Red);
 		else
 			playerHPtext.setFillColor(Color(80, 173, 40));
-		if (hp == 0) {
-			playerHPtext.setFillColor(Color(18, 169, 199));
-			enLeft = "You are dead!";
+		if (hp <= 0) {
+			playerHPtext.setFillColor(Color(117, 9, 9));
+			s = "You are dead!";
 		}
-		playerHPtext.setString(enLeft);
-		playerHPtext.setCharacterSize(22);
-		playerHPtext.setPosition(WIDTH * 0.45, 11.f);
+
+		Texts::textScheme(this->playerHPtext, s, size, pos);
+	}
+
+	Text getTXT() {
+		return this->playerHPtext;
 	}
 };

@@ -1,14 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include "MyShape.hpp"
 
 using namespace std;
 using namespace sf;
 
 
-class Bullet : public Drawable {
+class Bullet : public MyShape {
 	Vector2f RectSize = { 4,12 };
-	void draw(RenderTarget& target, RenderStates state) const override;
 	float velocityVar{ 9.f };
 	Vector2f velocity{ 0.f, velocityVar };
 public: //lista pocisków tutaj? list<Bullet> bullets;
@@ -23,5 +23,7 @@ public: //lista pocisków tutaj? list<Bullet> bullets;
 	float top();
 	float bottom();
 	void update();
+	
+	void draw(RenderTarget& target, RenderStates state) const;
 
 };

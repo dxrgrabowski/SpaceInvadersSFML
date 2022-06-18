@@ -24,9 +24,12 @@ int main()
 	Clock Pclock;
 	Clock Eclock;
 	Clock clock3;
+	
+	RightTXT rightTXT;
+	PlayerHp playerhpTXT;
+	LeftXT leftTXT;
 
 	fifo queue;
-	Texts texts;
 	Player player(PLAYERHP, 0.f, 0.f);
 	Mylist enemyList;
 	BulletVec bulletVec;
@@ -52,24 +55,24 @@ int main()
 
 		file.dataLoad(bulletVec.enemiesCombined);
 
-		texts.textWrite(bulletVec.enemiesCombined);
-		texts.enemiesKilledTotal(file.getTotalKilled());
-		texts.playerHP(player.hp);
+		leftTXT.drawTXT(bulletVec.enemiesCombined);
+		rightTXT.drawTXT(file.getTotalKilled());
+		playerhpTXT.drawTXT(player.hp);
 
-		window.draw(texts.enemiesRemain);
-		window.draw(texts.enemiesTotal);
-		window.draw(texts.playerHPtext);
+		window.draw(leftTXT.getTXT());
+		window.draw(rightTXT.getTXT());
+		window.draw(playerhpTXT.getTXT());
 
 		player.update();
 		player.shoot(bulletVec.bullets, Pclock);
-		window.draw(player);
+		player.draw(window, sf::RenderStates::Default);
 
 		enemyList.shoot(bulletVec.bullets, Eclock);
 		bulletVec.bulletCollision(enemyList.enemies, tarcza.oneShield, player);
 
 		for (auto& b : bulletVec.bullets) {
 			b.update();
-			window.draw(b);
+			b.draw(window, sf::RenderStates::Default);
 		}
 
 		for (auto& enemy : enemyList.enemies) {
@@ -78,7 +81,7 @@ int main()
 		}
 
 		for (auto& pixel : tarcza.oneShield) {
-			window.draw(pixel);
+			pixel.draw(window, sf::RenderStates::Default);
 		}
 
 		window.display();

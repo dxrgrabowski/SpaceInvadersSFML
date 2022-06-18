@@ -41,7 +41,7 @@ public:
 	int operator+(int& e1) const { return ID.column + e1; }
 
 	// Odziedziczono za poœrednictwem elementu MyShape
-	virtual void draw(RenderTarget& target, RenderStates state);
+	void draw(RenderTarget& target, RenderStates state)const;
 };
 
 class Mylist {

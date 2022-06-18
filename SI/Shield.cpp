@@ -18,6 +18,11 @@ Shield::Shield(float x, float y) {
 	this->x = x;
 	this->y = y;
 }
+
+void Pixel::draw(RenderTarget& target, RenderStates state) const {
+	target.draw(this->shape, state);
+}
+
 void Shield::shieldMaker() {
 	for (int k = 0; k < 3; k++) {
 		for (int i = 1; i < shieldLines; i++) {
@@ -29,8 +34,3 @@ void Shield::shieldMaker() {
 	}
 }
 
-
-// ID string(this->ID) + string(this->x * j) + string(this->y * i)
-void Pixel::draw(RenderTarget& target, RenderStates state) const {
-	target.draw(this->shape, state);
-}

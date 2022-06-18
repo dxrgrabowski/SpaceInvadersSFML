@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Global.hpp"
+#include "MyShape.hpp"
 
 using namespace std;
 using namespace sf;
@@ -32,10 +33,9 @@ public:
 };
 
 
-class Pixel : public Drawable {
+class Pixel : public MyShape {
 	
 	float x, y;
-	void draw(RenderTarget& target, RenderStates state) const override;
 	Vector2f RectSize = { shieldPixelX, shieldPixelY };
 
 public:
@@ -45,6 +45,8 @@ public:
 	
 	pCord ID;
 	RectangleShape shape;
+	
+	void draw(RenderTarget& target, RenderStates state) const;
 };
 
 
