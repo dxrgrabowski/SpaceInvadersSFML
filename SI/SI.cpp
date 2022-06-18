@@ -54,8 +54,11 @@ int main()
 
 		texts.textWrite(bulletVec.enemiesCombined);
 		texts.enemiesKilledTotal(file.getTotalKilled());
+		texts.playerHP(player.hp);
+
 		window.draw(texts.enemiesRemain);
 		window.draw(texts.enemiesTotal);
+		window.draw(texts.playerHPtext);
 
 		player.update();
 		player.shoot(bulletVec.bullets, Pclock);

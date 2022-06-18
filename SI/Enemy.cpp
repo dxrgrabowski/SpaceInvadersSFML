@@ -43,7 +43,7 @@ void Enemy::update(vector<Enemy>& enemies, Clock& clock) {
 	this->shape.move(this->velocity);
 
 	Time elapsed3 = clock.getElapsedTime();
-	Time enemyYCool = seconds(0.3f);
+	Time enemyYCool = seconds(0.25f);
 
 	if (elapsed3 > enemyYCool) {
 		for (auto& enemy : enemies) {
@@ -96,7 +96,7 @@ bool comp(const Enemy& enemy1, const Enemy& enemy2) {
 void Mylist::shoot(vector<Bullet>& bullets, Clock& clock) {
 
 	Time elapsed2 = clock.getElapsedTime();
-	Time enemyCool = seconds(0.1f);
+	Time enemyCool = seconds(0.15f);
 
 	if (elapsed2 > enemyCool && !this->enemies.empty()) {
 
