@@ -39,6 +39,7 @@ public:
 
 		int it = 0;
 
+		bool sessionsFlag=0;
 		string downloadedD;
 		string sessionLine, recordLine;
 
@@ -50,6 +51,7 @@ public:
 
 		while (getline(input_file, sessionLine)) {
 			queue.push_back(sessionLine);
+			sessionsFlag = 1;
 		}
 
 		while (getline(input_record_file, recordLine)) {
@@ -62,7 +64,9 @@ public:
 		if (downloadedD.size() > 1)
 			this->fileData = stoi(downloadedD);
 		else
-			cerr << "record load failed";
+			cerr << "Failed to load record.txt";
+		if (!sessionsFlag)
+			cerr << "Failed to load sessions.txt";
 	}
 	void fileMaker(fifo& queue) {
 
@@ -80,7 +84,7 @@ public:
 
 		if (output_file.is_open()) {
 			while (queue.end - queue.begin > 0) {
-				output_file << queue.getFirst() << endl;
+				output_file << queue;
 			}
 
 			output_file << st.wHour + 2 << ":" << st.wMinute << " | " << st.wDay << "."

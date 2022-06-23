@@ -14,7 +14,7 @@ protected:
 
 	void textScheme(Text& t, string& s, int& size, Vector2f& pos) {
 		if (!this->font.loadFromFile("Fonts/font.ttf"))
-			throw("Couldn't open font");
+			throw("Couldn't load font");
 		t.setOutlineColor(Color::White);
 		t.setOutlineThickness(2);
 		t.setFont(this->font);

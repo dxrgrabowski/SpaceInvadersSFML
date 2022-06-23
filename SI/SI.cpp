@@ -7,6 +7,8 @@
 #include "Text.hpp"
 #include "FileMenager.hpp"
 
+//zaliczenie z POLIMORFIZM
+
 /*
 X Pamięć dynamiczna lista list stos dzewo kolejka
 x Pliki odczyt zapis operatory strumieniowe

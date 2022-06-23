@@ -1,5 +1,5 @@
 #pragma once
-
+#include <fstream>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -25,6 +25,14 @@ public:
 			delete b;
 	}
 
+	friend ostream& operator<<(ostream& output, fifo& queue) {
+		queue.el = queue.b;
+		queue.b = queue.b->nastepny;
+		++queue.begin;
+		output << queue.b->element << endl;
+		return output;
+	};
+
 	unsigned int size() { return end - begin; }//liczba elementów w kolejce
 
 	void push_back(string x)//dodanie elementu na end kolejki
@@ -46,17 +54,6 @@ public:
 		}
 		end++;
 	}
-
-	string getFirst()//zwracanie elementu z kolejki i ustawienie wsk nastêpnego el
-	{
-
-		//if(end - begin>1){}
-		el = b;
-		b = b->nastepny; //przejscie na nastêpny element kolejki
-		++begin;
-		return b->element;
-	}
-
 
 	unsigned int begin, end; // index
 
