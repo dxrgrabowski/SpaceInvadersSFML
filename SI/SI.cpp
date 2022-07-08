@@ -6,23 +6,16 @@
 #include "BulletVec.hpp"
 #include "Text.hpp"
 #include "FileMenager.hpp"
+#include "TimeEngine.h"
 
 //zaliczenie z POLIMORFIZM
 
-/*
-X Pamięć dynamiczna lista list stos dzewo kolejka
-x Pliki odczyt zapis operatory strumieniowe
-X Operatory przeciążenie kilka
-X Dziedziczenie polimorfizm
-X Minimum 5 klas bez dziczenia
-X Klasy powiązane jedna używa drugiej
-*/
 
 int main()
 {
 	RenderWindow window{ VideoMode{WIDTH, HEIGHT}, "Space Invaders" };
-	window.setFramerateLimit(60);
-
+	window.setFramerateLimit(120);
+	GameClock deltaTime;
 	Clock Pclock;
 	Clock Eclock;
 	Clock clock3;
@@ -53,8 +46,8 @@ int main()
 				window.close();
 		}
 
+		deltaTime.restart();
 		window.clear();
-
 		file.dataLoad(bulletVec.enemiesCombined);
 
 		leftTXT.drawTXT(bulletVec.enemiesCombined);
@@ -65,7 +58,7 @@ int main()
 		window.draw(rightTXT.getTXT());
 		window.draw(playerhpTXT.getTXT());
 
-		player.update();
+		player.update(deltaTime.dt);
 		player.shoot(bulletVec.bullets, Pclock);
 		player.draw(window, sf::RenderStates::Default);
 
@@ -73,12 +66,12 @@ int main()
 		bulletVec.bulletCollision(enemyList.enemies, tarcza.oneShield, player);
 
 		for (auto& b : bulletVec.bullets) {
-			b.update();
+			b.update(deltaTime.dt);
 			b.draw(window, sf::RenderStates::Default);
 		}
 
 		for (auto& enemy : enemyList.enemies) {
-			enemy.update(enemyList.enemies, clock3);
+			enemy.update(enemyList.enemies, clock3, deltaTime.dt);
 			enemy.draw(window, sf::RenderStates::Default);
 		}
 

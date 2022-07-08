@@ -7,13 +7,23 @@
 using namespace std;
 
 class fifo {
+private:
+	bool oneElement; 
+
+	struct oneline {
+		string element;
+		oneline* nastepny = nullptr;
+	};
+	oneline* b = nullptr;
+	oneline* e = nullptr;
+	oneline* el = nullptr;
 public:
 	fifo() {
 		this->begin = 0;
 		this->end = 0;
 		this->oneElement = 1;
 	}
-	~fifo()
+	~fifo() 
 	{
 		while (end - begin > 0) {
 			el = b;
@@ -33,38 +43,28 @@ public:
 		return output;
 	};
 
-	unsigned int size() { return end - begin; }//liczba elementów w kolejce
+	unsigned int size() { return end - begin; }
 
-	void push_back(string x)//dodanie elementu na end kolejki
+	void push_back(string x)
 	{
-		if (oneElement)//jesli pierwszy element wrzucamy do kolejki
+		if (oneElement)
 		{
-			e = new oneline;    //utworzenie elementu ostatniego
-			e->element = x; //przypisanie do niego wartosci
-			b = new oneline; 		//utworzenei elemntu pierwszego
-			b->nastepny = e;  //element pierwszy wskazuje na ostatni	
+			e = new oneline;   
+			e->element = x; 
+			b = new oneline; 		
+			b->nastepny = e; 
 			oneElement = 0;
 		}
 		else
 		{
-			el = new oneline;    //utworzenie nowego elementu kolejki
-			el->element = x;	//przypisanie do niego wartosci
-			e->nastepny = el;	//ostatni dotychczas element wskazuje na utworzony
-			e = el;				//element utworzony staje siê ostatnim
+			el = new oneline;   
+			el->element = x;	
+			e->nastepny = el;	
+			e = el;				
 		}
 		end++;
 	}
 
-	unsigned int begin, end; // index
+	unsigned int begin, end;
 
-private:
-	bool oneElement; // czy w kolejce cos ju¿ siê pojawi³o
-
-	struct oneline {
-		string element;
-		oneline* nastepny = nullptr;
-	};
-	oneline* b = nullptr;
-	oneline* e = nullptr;
-	oneline* el = nullptr;
 };

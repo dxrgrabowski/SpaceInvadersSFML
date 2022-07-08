@@ -30,7 +30,7 @@ public:
 	float right();
 	float top();
 	float bottom();
-	void update(vector<Enemy>& enemies, Clock& clock);
+	void update(vector<Enemy>& enemies, Clock& clock, const float& dt);
 
 	bool operator<(Enemy const& e1) const { return ID.line < e1.ID.line; }
 

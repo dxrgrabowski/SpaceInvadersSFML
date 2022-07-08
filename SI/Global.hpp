@@ -19,3 +19,5 @@ const int enemyRow = 5;
 const int enemyColumn = 16;
 const float enemyColumnSpaces = 65.f;
 const float enemyRowSpaces = 65.f;
+
+const unsigned int DELTAMULTI = 55; //changes movement speed of every moving object in time

@@ -48,11 +48,10 @@ void Player::shoot(vector<Bullet>& bullets, Clock& clock) {
 	}
 }
 
-void Player::update() {
+void Player::update(const float& dt) {
 	
-	this->shape.move(this->velocity);
-	shape.setPosition(this->x, this->y);
-	
+	//shape.setPosition(this->x, this->y);
+	//cout << dt << endl;
 	if ((Keyboard::isKeyPressed(Keyboard::Key::Left) || Keyboard::isKeyPressed(Keyboard::Key::A)) && this->left() > 0) {
 		this->velocity.x = -velocityVar;
 		this->x += -velocityVar;
@@ -63,6 +62,7 @@ void Player::update() {
 	}
 	else
 		this->velocity.x = 0;
+	this->shape.move(this->velocity.x*dt* DELTAMULTI,0);
 }
 
 

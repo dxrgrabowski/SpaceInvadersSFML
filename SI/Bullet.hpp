@@ -22,7 +22,7 @@ public: //lista pocisków tutaj? list<Bullet> bullets;
 	float right();
 	float top();
 	float bottom();
-	void update();
+	void update(const float& dt);
 	
 	void draw(RenderTarget& target, RenderStates state) const;
 

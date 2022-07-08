@@ -38,9 +38,9 @@ float Enemy::bottom() {
 }
 
 
-void Enemy::update(vector<Enemy>& enemies, Clock& clock) {
+void Enemy::update(vector<Enemy>& enemies, Clock& clock, const float& dt) {
 
-	this->shape.move(this->velocity);
+	this->shape.move(this->velocity.x * dt * DELTAMULTI, this->velocity.y * dt * DELTAMULTI);
 
 	Time elapsed3 = clock.getElapsedTime();
 	Time enemyYCool = seconds(0.25f);

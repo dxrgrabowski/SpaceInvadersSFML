@@ -28,11 +28,11 @@ float Bullet::bottom() {
 	return this->shape.getPosition().y + shape.getSize().y;
 }
 
-void Bullet::update() {
+void Bullet::update(const float& dt) {
 	
-	this->shape.move(this->velocity);
+	this->shape.move(this->velocity.x * dt * DELTAMULTI, this->velocity.y * dt * DELTAMULTI);
 	velocity.y = this->turn * velocityVar;
-	this->y = y + velocity.y;
+	this->y = y + velocity.y * dt * DELTAMULTI;
 }
 
 

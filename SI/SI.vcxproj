@@ -170,6 +170,7 @@
     <ClInclude Include="MyShape.hpp" />
     <ClInclude Include="Shield.hpp" />
     <ClInclude Include="Text.hpp" />
+    <ClInclude Include="TimeEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="sessions.txt" />
