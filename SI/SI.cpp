@@ -47,6 +47,7 @@ int main()
 		}
 
 		deltaTime.restart();
+		deltaTime.currentTime = deltaTime.mainClock.getElapsedTime().asSeconds();
 		window.clear();
 		file.dataLoad(bulletVec.enemiesCombined);
 

@@ -15,7 +15,9 @@ class Player : public MyShape {
 	const float velocityVar{ 7.0f };
 	Vector2f velocity{ velocityVar, 0.f };
 	bool isPlayerDead=0;
-
+	float acc;
+	float friction;
+	int turn; // -1=left 0=idle 1=right
 public:
 	
 	Player(int hp, float x, float y);
@@ -30,6 +32,6 @@ public:
 	float right();
 	float top();
 	float bottom();
-	
+	void hitFadeColor();
 	void draw(RenderTarget& target, RenderStates state)const;
 };

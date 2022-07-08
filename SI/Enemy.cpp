@@ -19,7 +19,7 @@ Enemy::Enemy(int hp, float x, float y, eCord ID) {
 
 	shape.setPosition(this->x, this->y);
 	shape.setSize(RectSize);
-	shape.setFillColor(Color::Red);
+	shape.setFillColor(Color(252, 136, 3));
 	shape.setOrigin(24, 24);
 };
 
@@ -96,7 +96,7 @@ bool comp(const Enemy& enemy1, const Enemy& enemy2) {
 void Mylist::shoot(vector<Bullet>& bullets, Clock& clock) {
 
 	Time elapsed2 = clock.getElapsedTime();
-	Time enemyCool = seconds(0.15f);
+	Time enemyCool = seconds(0.2f);
 
 	if (elapsed2 > enemyCool && !this->enemies.empty()) {
 

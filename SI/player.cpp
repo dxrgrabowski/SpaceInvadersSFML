@@ -12,6 +12,9 @@ Player::Player(int hp, float x, float y) {
 	this->x = WIDTH / 2.f;
 	this->y = HEIGHT * 0.95f;
 	this->hp = hp;
+	this->acc = 0;
+	this->friction = FRICTION;
+	this->turn = 0;
 
 	shape.setPosition(this->x, this->y);
 	shape.setSize(RectSize);
@@ -52,19 +55,39 @@ void Player::update(const float& dt) {
 	
 	//shape.setPosition(this->x, this->y);
 	//cout << dt << endl;
-	if ((Keyboard::isKeyPressed(Keyboard::Key::Left) || Keyboard::isKeyPressed(Keyboard::Key::A)) && this->left() > 0) {
-		this->velocity.x = -velocityVar;
-		this->x += -velocityVar;
+	if ((Keyboard::isKeyPressed(Keyboard::Key::Left) || Keyboard::isKeyPressed(Keyboard::Key::A)) && (Keyboard::isKeyPressed(Keyboard::Key::Right) || Keyboard::isKeyPressed(Keyboard::Key::D))) {
+		this->acc = this->acc * this->friction;
 	}
-	if ((Keyboard::isKeyPressed(Keyboard::Key::Right) || Keyboard::isKeyPressed(Keyboard::Key::D)) && this->right() < WIDTH) {
-		this->velocity.x = velocityVar;
-		this->x += velocityVar;
+	else if ((Keyboard::isKeyPressed(Keyboard::Key::Left) || Keyboard::isKeyPressed(Keyboard::Key::A)) && this->left() > 0) {
+
+		if (this->acc > -P_MAX_ACC)
+			this->acc -= P_ACC;
 	}
-	else
-		this->velocity.x = 0;
+	else if ((Keyboard::isKeyPressed(Keyboard::Key::Right) || Keyboard::isKeyPressed(Keyboard::Key::D)) && this->right() < WIDTH) {
+
+		if (this->acc < P_MAX_ACC)
+			this->acc += P_ACC;
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Key::M))
+		hitFadeColor();
+	else {
+		this->acc = this->acc * this->friction;
+	}
+	
+
+	this->velocity.x = acc;
 	this->shape.move(this->velocity.x*dt* DELTAMULTI,0);
 }
 
+void Player::hitFadeColor()
+{
+	Clock clock;
+	float currentTime;
+	currentTime= clock.getElapsedTime().asSeconds()*100;
+	cout << currentTime << endl;
+		const sf::Color color(255, static_cast<sf::Uint8>(0.f  + currentTime), static_cast<sf::Uint8>(0.f +  currentTime));
+		shape.setFillColor(color);
+}
 
 void Player::draw(RenderTarget& target, RenderStates state) const {
 	target.draw(this->shape, state);
