@@ -162,15 +162,18 @@
   <ItemGroup>
     <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="BulletVec.hpp" />
+    <ClInclude Include="Button.hpp" />
     <ClInclude Include="FileMenager.hpp" />
     <ClInclude Include="fileQueue.hpp" />
+    <ClInclude Include="mainMenu.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="Global.hpp" />
     <ClInclude Include="MyShape.hpp" />
     <ClInclude Include="Shield.hpp" />
     <ClInclude Include="Text.hpp" />
-    <ClInclude Include="TimeEngine.h" />
+    <ClInclude Include="TimeEngine.hpp" />
+    <ClInclude Include="UI.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="sessions.txt" />

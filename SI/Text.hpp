@@ -2,43 +2,29 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "BulletVec.hpp"
+#include <iostream>
 
 class PlayerHp;
 
 class Texts {
 
-
-protected:
-	Font font;
-	Text enemiesRemain;
-
-	void textScheme(Text& t, string& s, int& size, Vector2f& pos) {
-		if (!this->font.loadFromFile("Fonts/font.ttf"))
-			throw("Couldn't load font");
-		t.setOutlineColor(Color::White);
-		t.setOutlineThickness(2);
-		t.setFont(this->font);
-		t.setCharacterSize(size);
-		t.setPosition(pos);
-		t.setString(s);
-	}
+	sf::Text enemiesRemain;
+	sf::Text enemiesTotal;
+	sf::Text playerHPtext;
+	sf::Font font;
 
 public:
-	Texts() = default;
+	
+	
+	Texts() {
+		if (!font.loadFromFile("Fonts/font.ttf")) {
+			std::cout << "ERROR!!!";
+		};
+	};
 	~Texts() = default;
-};
-
-class LeftXT : protected Texts {
-
-	friend class Texts;
-	Text enemiesRemain;
-
-public:
-	LeftXT() = default;
-	~LeftXT() = default;
-
-
-	void drawTXT(int enemiesCombined) {
+	
+	sf::Text drawLeftTXT(int enemiesCombined) {
+		
 		string s = "Enemies total killed: " + to_string(enemiesCombined);
 		Vector2f pos = { 10.f, 10.f };
 		int size = 18;
@@ -54,49 +40,34 @@ public:
 			s = "All enemies Killed";
 		}
 
-		Texts::textScheme(this->enemiesRemain, s, size, pos);
+		enemiesRemain.setOutlineColor(Color::White);
+		enemiesRemain.setOutlineThickness(2);
+		enemiesRemain.setFont(this->font);
+		enemiesRemain.setCharacterSize(size);
+		enemiesRemain.setPosition(pos);
+		enemiesRemain.setString("Enemies total killed: ");
+		
+		return enemiesRemain;
 	}
 
-	Text getTXT() {
-		return this->enemiesRemain;
-	}
-};
-
-class RightTXT : protected Texts {
-
-	friend class Texts;
-	Text enemiesTotal;
-
-public:
-	RightTXT() = default;
-	~RightTXT() = default;
-
-
-	void drawTXT(int total) {
+	sf::Text drawRightTXT(int total) {
+		
 		string s = "Enemies total killed: " + to_string(total);
 		Vector2f pos = { WIDTH * 0.7, 10.f };
 		int size = 18;
 
-		Texts::textScheme(this->enemiesTotal, s, size, pos);
+		enemiesTotal.setOutlineColor(Color::White);
+		enemiesTotal.setOutlineThickness(2);
+		enemiesTotal.setFont(this->font);
+		enemiesTotal.setCharacterSize(size);
+		enemiesTotal.setPosition(pos);
+		enemiesTotal.setString(s);
 		enemiesTotal.setFillColor(Color(122, 118, 232));
+
+		return enemiesTotal;
 	}
-
-	Text getTXT() {
-		return this->enemiesTotal;
-	}
-};
-
-class PlayerHp : protected Texts {
-
-	friend class Texts;
-	Text playerHPtext;
-
-public:
-	PlayerHp() = default;
-	~PlayerHp() = default;
-
-
-	void drawTXT(int hp) {
+	
+	sf::Text drawHpTXT(int hp) {
 		string s = "HP: " + to_string(hp);
 		Vector2f pos = { WIDTH * 0.45f, 11.f };
 		int size = 22;
@@ -111,10 +82,14 @@ public:
 		else
 			playerHPtext.setFillColor(Color(80, 173, 40));
 
-		Texts::textScheme(this->playerHPtext, s, size, pos);
-	}
-
-	Text getTXT() {
-		return this->playerHPtext;
+		playerHPtext.setOutlineColor(Color::White);
+		playerHPtext.setOutlineThickness(2);
+		playerHPtext.setFont(this->font);
+		playerHPtext.setCharacterSize(size);
+		playerHPtext.setPosition(pos);
+		playerHPtext.setString(s);
+		
+		return playerHPtext;
 	}
 };
+

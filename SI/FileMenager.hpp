@@ -17,7 +17,9 @@ class FileMenager {
 
 public:
 
-	FileMenager() = default;
+	FileMenager(fifo& queue) {
+		fileLoader(queue);
+	};
 	~FileMenager() = default;
 
 	int getTotalKilled() {
