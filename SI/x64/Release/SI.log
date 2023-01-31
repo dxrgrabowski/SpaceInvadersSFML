@@ -1,9 +1,5 @@
-﻿  Bullet.cpp
-  Enemy.cpp
-  Player.cpp
-  Shield.cpp
-  SI.cpp
-C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(44,64): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+﻿  SI.cpp
+C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(50,64): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=int
@@ -12,7 +8,7 @@ C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(44,64):
           [
               T=float
           ]
-C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(44,52): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(50,52): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=int
@@ -21,7 +17,7 @@ C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(44,52):
           [
               T=float
           ]
-C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(54,108): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(62,108): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=int
@@ -30,7 +26,7 @@ C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(54,108)
           [
               T=float
           ]
-C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(54,74): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(62,74): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=int
@@ -40,8 +36,8 @@ C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(54,74):
               T=float
           ]
   Trwa generowanie kodu
-  5 of 160 functions ( 3.1%) were compiled, the rest were copied from previous compilation.
-    2 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  0 of 519 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   SI.vcxproj -> C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\x64\Release\SI.exe

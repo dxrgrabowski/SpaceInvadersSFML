@@ -25,7 +25,7 @@ public:
 	
 	sf::Text drawLeftTXT(int enemiesCombined) {
 		
-		string s = "Enemies total killed: " + to_string(enemiesCombined);
+		string s = "Enemies remain " + to_string(enemiesCombined);
 		Vector2f pos = { 10.f, 10.f };
 		int size = 18;
 
@@ -45,7 +45,7 @@ public:
 		enemiesRemain.setFont(this->font);
 		enemiesRemain.setCharacterSize(size);
 		enemiesRemain.setPosition(pos);
-		enemiesRemain.setString("Enemies total killed: ");
+		enemiesRemain.setString(s);
 		
 		return enemiesRemain;
 	}

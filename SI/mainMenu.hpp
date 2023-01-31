@@ -42,6 +42,17 @@ public:
 		buttonsVec.push_back(exitButton);
 	}
 
+	void drawButtons(RenderWindow& window) {
+		for (auto& button : buttonsVec) {
+
+			//button.hoverColorChange(sf::Color::Red);
+
+			//if (button.isClicked(window)) {
+				//}
+			window.draw(button.getTxt());
+		}
+	}
+
 	sf::Vector2f calculateNewPosition(float time, float radius) {
 		
 		float angle = time/2;

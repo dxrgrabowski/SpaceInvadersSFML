@@ -4,10 +4,8 @@
 int main()
 {
 	Ui Interface;
-	Interface.mainMenuLoop();
-
-
-
+	
+	Interface.inGameInnerLoop();
 	
 	return 0;
 }

@@ -30,7 +30,7 @@ class Ui {
 public:
 	Ui() {
 		window.setFramerateLimit(120);
-		mainMenuLoop();
+		//mainMenuLoop();
 	};
 
 	~Ui() = default;
@@ -52,18 +52,12 @@ public:
 
 			sf::Vector2f newPosition = menu.calculateNewPosition(deltaTime.currentTime, RADIUS);
 			menu.backgroundSprite.setPosition(newPosition);
+			//cout << "DONE" << endl;
+			
+			//window.draw(menu.buttonsVec[0].getTxt());
 
-			menu.buttonsVec[0].draw();
+			//menu.drawButtons(window);
 
-			for (auto& button : menu.buttonsVec) {
-				
-				//button.hoverColorChange(sf::Color::Red);
-
-				//if (button.isClicked(window)) {
-					//}
-
-				button.draw();
-			}
 			// rysuj sprite na ekranie
 			window.clear();
 			window.draw(menu.backgroundSprite);

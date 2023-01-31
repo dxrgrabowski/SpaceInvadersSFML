@@ -28,4 +28,6 @@ const float enemyRowSpaces = 65.f;
 //Menu 
 const float RADIUS = 50.f;
 
+//Flags
+
 const unsigned int DELTAMULTI = 55; //changes movement speed of every moving object in time

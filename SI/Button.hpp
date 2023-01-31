@@ -27,7 +27,11 @@ public:
 	}
 	
 	void draw() {
-		window.draw(buttonText);
+		window.draw(this->buttonText);
+	}
+
+	sf::Text getTxt() {
+		return buttonText;
 	}
 
 	bool isClicked(sf::RenderWindow& window);
@@ -40,7 +44,9 @@ public:
 
 
 bool Button::isClicked(sf::RenderWindow& window) {
+	
 	sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+	
 	if (buttonText.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 			return true;
@@ -50,7 +56,9 @@ bool Button::isClicked(sf::RenderWindow& window) {
 }
 
 void Button::hoverColorChange(sf::Color color) {
+	
 	hoverColor = color;
+	
 	if (buttonText.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
 		buttonText.setFillColor(hoverColor);
 	}
