@@ -5,7 +5,6 @@ int main()
 {
 	Ui Interface;
 	
-	Interface.inGameInnerLoop();
-	
+
 	return 0;
 }

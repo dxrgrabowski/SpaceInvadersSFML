@@ -73,12 +73,8 @@ void BulletVec::bulletCollision(vector<Enemy>& enemies, vector<Pixel>& oneShield
 		}
 		else if (it->shape.getGlobalBounds().intersects(player.shape.getGlobalBounds())) {
 
-			if (player.hp > 0) {
+			if (player.hp >= 0) {
 				player.hp = player.hp - 25;
-				it = this->bullets.erase(it);
-			}
-			else {
-				player.shape.setFillColor(Color::Transparent);
 				it = this->bullets.erase(it);
 			}
 		}

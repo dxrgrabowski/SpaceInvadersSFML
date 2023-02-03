@@ -1,6 +1,7 @@
 #pragma once
 #include "Text.hpp"
 
+
 class Button {
 private:
 	sf::RenderWindow& window;
@@ -14,16 +15,14 @@ public:
 	Button(sf::RenderWindow& win, sf::Vector2f position, sf::Color textColor, std::string text) : window(win) {
 		if (!font.loadFromFile("Fonts/font.ttf")) 
 			std::cout << "Font not found!";
-		
+
 		buttonText.setString(text);
 		buttonText.setPosition(position);
 		buttonText.setFillColor(textColor);
 		buttonText.setOutlineColor(Color::White);
 		buttonText.setOutlineThickness(2);
 		buttonText.setFont(font);
-		this->textColor = textColor;
-
-		
+		this->textColor = textColor;	
 	}
 	
 	void draw() {
@@ -31,7 +30,7 @@ public:
 	}
 
 	sf::Text getTxt() {
-		return buttonText;
+		return this->buttonText;
 	}
 
 	bool isClicked(sf::RenderWindow& window);

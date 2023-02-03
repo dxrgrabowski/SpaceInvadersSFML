@@ -1,15 +1,24 @@
 #pragma once
 #include "Button.hpp"
+#include "UI.hpp"
 
 class mainMenu {
 	sf::Texture backgroundTexture;
 	//sf::Vector2f startingPos{ WIDTH / 2.f, HEIGHT / 2.f };
-public:
-	sf::Sprite backgroundSprite;
-	vector<Button> buttonsVec;
+	
+	Button optionsButton;
+	Button exitButton;
 
-	mainMenu() {
-		backgroundTexture.loadFromFile("C:/Users/mrdex/source/repos/dxrgrabowski/SpaceInvadersSFML/SI/Assets/bg_1.jpg");
+public:
+	Button playButton;
+	sf::Sprite backgroundSprite;
+
+	mainMenu(sf::RenderWindow& window) : 
+		playButton(window, { WIDTH / 2.f-60,HEIGHT / 2.f }, Color(252, 186, 3), "Play"), 
+		optionsButton(window, { WIDTH / 2.f - 60,HEIGHT / 2.f + 50 }, Color(3, 235, 252), "Options"),
+		exitButton(window, { WIDTH / 2.f - 60,HEIGHT / 2.f + 100 }, Color(252, 3, 40), "Exit") {
+
+		backgroundTexture.loadFromFile("Assets/bg_1.jpg");
 		backgroundSprite.setTexture(backgroundTexture);
 	}
 
@@ -28,29 +37,21 @@ public:
 
 	}
 
-	void addButtons(RenderWindow& window) {
-		Vector2f playButtonPos{ WIDTH / 2.f,HEIGHT / 2.f };
-		Vector2f OptionsButtonPos{ WIDTH / 2.f,HEIGHT / 2.f +50 };
-		Vector2f ExitButtonPos{ WIDTH / 2.f,HEIGHT / 2.f + 100 };
-		
-		Button playButton(window, playButtonPos, Color::White, "Play");
-		Button optionsButton(window, OptionsButtonPos, Color::White, "Options");
-		Button exitButton(window, ExitButtonPos, Color::White, "Exit");
-
-		buttonsVec.push_back(playButton);
-		buttonsVec.push_back(optionsButton);
-		buttonsVec.push_back(exitButton);
-	}
-
 	void drawButtons(RenderWindow& window) {
-		for (auto& button : buttonsVec) {
-
-			//button.hoverColorChange(sf::Color::Red);
-
-			//if (button.isClicked(window)) {
-				//}
-			window.draw(button.getTxt());
-		}
+		
+		window.draw(playButton.getTxt());
+		window.draw(optionsButton.getTxt());
+		window.draw(exitButton.getTxt());
+		
+		if (playButton.isClicked(window))
+			
+		//if (optionsButton.isClicked(window))
+		if(exitButton.isClicked(window))
+			window.close();
+		
+		exitButton.hoverColorChange(Color(152, 186, 3));
+		playButton.hoverColorChange(Color(3, 135, 252));
+		optionsButton.hoverColorChange(Color(152, 3, 40));
 	}
 
 	sf::Vector2f calculateNewPosition(float time, float radius) {

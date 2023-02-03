@@ -1,2 +1,43 @@
-﻿  SI.cpp
+﻿  Bullet.cpp
+  Enemy.cpp
+  Player.cpp
+  SI.cpp
+C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(50,64): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(50,52): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(62,108): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(62,74): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+  Shield.cpp
+  Generowanie kodu...
   SI.vcxproj -> C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\x64\Debug\SI.exe

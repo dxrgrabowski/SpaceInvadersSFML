@@ -1,5 +1,5 @@
 ﻿  SI.cpp
-C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(50,64): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(49,64): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=int
@@ -8,7 +8,7 @@ C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(50,64):
           [
               T=float
           ]
-C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(50,52): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(49,52): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=int
@@ -17,7 +17,7 @@ C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(50,52):
           [
               T=float
           ]
-C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(62,108): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(61,108): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=int
@@ -26,7 +26,7 @@ C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(62,108)
           [
               T=float
           ]
-C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(62,74): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(61,74): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=int
@@ -36,7 +36,7 @@ C:\Users\mrdex\source\repos\dxrgrabowski\SpaceInvadersSFML\SI\Button.hpp(62,74):
               T=float
           ]
   Trwa generowanie kodu
-  0 of 519 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  15 of 534 functions ( 2.8%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu

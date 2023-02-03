@@ -14,7 +14,6 @@ class mainMenu;
 
 class Ui {
 	
-	RenderWindow window{ VideoMode{WIDTH, HEIGHT}, "Space Invaders" };
 	Event event;
 	
 	Clock Pclock;
@@ -27,19 +26,21 @@ class Ui {
 		
 	GameClock deltaTime;
 
+	RenderWindow window{ VideoMode{WIDTH, HEIGHT}, "Space Invaders" };
 public:
 	Ui() {
 		window.setFramerateLimit(120);
-		//mainMenuLoop();
+		mainMenuLoop();
 	};
 
 	~Ui() = default;
 
 	void mainMenuLoop() {
 		
-		mainMenu menu;
-		menu.addButtons(window);
+		mainMenu menu(window);
 		menu.setBackground(window);
+		
+		//Button playButton(window, { WIDTH / 2.f,HEIGHT / 2.f }, Color::White, "Play");
 
 		while (window.isOpen())
 		{
@@ -47,20 +48,22 @@ public:
 				if (event.type == Event::Closed)
 					window.close();
 			}
-			deltaTime.restart();
-			deltaTime.currentTime = deltaTime.mainClock.getElapsedTime().asSeconds();
-
+			window.clear();
+			
+			//Background
 			sf::Vector2f newPosition = menu.calculateNewPosition(deltaTime.currentTime, RADIUS);
 			menu.backgroundSprite.setPosition(newPosition);
-			//cout << "DONE" << endl;
-			
-			//window.draw(menu.buttonsVec[0].getTxt());
-
-			//menu.drawButtons(window);
-
-			// rysuj sprite na ekranie
-			window.clear();
 			window.draw(menu.backgroundSprite);
+			
+			//delta time
+			deltaTime.restart();
+			deltaTime.currentTime = deltaTime.mainClock.getElapsedTime().asSeconds();
+			
+			//Button handler
+			menu.drawButtons(window);
+			if (menu.playButton.isClicked(window))
+				inGameInnerLoop();
+
 			window.display();
 			
 
@@ -85,7 +88,7 @@ public:
 				if (event.type == Event::Closed)
 					window.close();
 			}
-			
+			//cout << player.hp << endl;
 			deltaTime.restart();
 			deltaTime.currentTime = deltaTime.mainClock.getElapsedTime().asSeconds();
 			window.clear();
@@ -115,6 +118,11 @@ public:
 			for (auto& pixel : tarcza.oneShield) {
 				pixel.draw(window, sf::RenderStates::Default);
 			}
+
+			if (player.hp <= 0) {
+				file.fileMaker(queue);
+				mainMenuLoop();
+			}	
 
 			window.display();
 		}
