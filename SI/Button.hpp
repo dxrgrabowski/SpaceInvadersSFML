@@ -1,10 +1,9 @@
 #pragma once
-#include "Text.hpp"
-
-
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <iostream>
 class Button {
 private:
-	sf::RenderWindow& window;
 	sf::Text buttonText;
 	sf::Color textColor;
 	sf::Color hoverColor;
@@ -12,7 +11,8 @@ private:
 
 public:
 
-	Button(sf::RenderWindow& win, sf::Vector2f position, sf::Color textColor, std::string text) : window(win) {
+	Button(sf::Vector2f position, sf::Color textColor, std::string text="default", int size = 18) {
+		
 		if (!font.loadFromFile("Fonts/font.ttf")) 
 			std::cout << "Font not found!";
 
@@ -22,46 +22,41 @@ public:
 		buttonText.setOutlineColor(Color::White);
 		buttonText.setOutlineThickness(2);
 		buttonText.setFont(font);
+		buttonText.setCharacterSize(size);
 		this->textColor = textColor;	
 	}
 	
-	void draw() {
-		window.draw(this->buttonText);
+	sf::Text getTXT() {
+		return buttonText;
 	}
 
-	sf::Text getTxt() {
-		return this->buttonText;
+	bool isClicked(sf::RenderWindow& window) {
+
+		sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+
+		if (buttonText.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
-	bool isClicked(sf::RenderWindow& window);
+	void hoverColorChange(sf::Color color, sf::RenderWindow& window) {
 
-	void hoverColorChange(sf::Color color);
+		hoverColor = color;
 
-};
-
-
-
-
-bool Button::isClicked(sf::RenderWindow& window) {
-	
-	sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-	
-	if (buttonText.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			return true;
+		if (buttonText.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
+			buttonText.setFillColor(hoverColor);
+		}
+		else {
+			buttonText.setFillColor(textColor);
 		}
 	}
-	return false;
-}
-
-void Button::hoverColorChange(sf::Color color) {
-	
-	hoverColor = color;
-	
-	if (buttonText.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) {
-		buttonText.setFillColor(hoverColor);
+	void changeText(string str) {
+		buttonText.setString(str);
 	}
-	else {
-		buttonText.setFillColor(textColor);
+	void setFillColor(sf::Color color) {
+		buttonText.setFillColor(color);
 	}
-}
+};

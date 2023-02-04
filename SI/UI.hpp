@@ -5,7 +5,7 @@
 #include "Shield.hpp"
 #include "Enemy.hpp"
 #include "BulletVec.hpp"
-#include "Text.hpp"
+#include "InGameStatusText.hpp"
 #include "FileMenager.hpp"
 #include "TimeEngine.hpp"
 #include "mainMenu.hpp"
@@ -21,8 +21,6 @@ class Ui {
 	Clock clock3;
 	
 	fifo queue;
-
-	Texts texts;
 		
 	GameClock deltaTime;
 
@@ -40,7 +38,6 @@ public:
 		mainMenu menu(window);
 		menu.setBackground(window);
 		
-		//Button playButton(window, { WIDTH / 2.f,HEIGHT / 2.f }, Color::White, "Play");
 
 		while (window.isOpen())
 		{
@@ -51,7 +48,7 @@ public:
 			window.clear();
 			
 			//Background
-			sf::Vector2f newPosition = menu.calculateNewPosition(deltaTime.currentTime, RADIUS);
+			sf::Vector2f newPosition = menu.calculateNewBackgroundPosition(deltaTime.currentTime, RADIUS);
 			menu.backgroundSprite.setPosition(newPosition);
 			window.draw(menu.backgroundSprite);
 			
@@ -60,7 +57,7 @@ public:
 			deltaTime.currentTime = deltaTime.mainClock.getElapsedTime().asSeconds();
 			
 			//Button handler
-			menu.drawButtons(window);
+			menu.handleButtons(window);
 			if (menu.playButton.isClicked(window))
 				inGameInnerLoop();
 
@@ -78,6 +75,8 @@ public:
 		BulletVec bulletVec;
 		Shield tarcza(100, HEIGHT / 2 + 230);
 
+		InGameStatusText texts;
+
 		enemyList.filler();
 		enemyList.startMoving();
 		tarcza.shieldMaker();
@@ -93,10 +92,9 @@ public:
 			deltaTime.currentTime = deltaTime.mainClock.getElapsedTime().asSeconds();
 			window.clear();
 			file.dataLoad(bulletVec.enemiesCombined);
-
-			window.draw(texts.drawLeftTXT(bulletVec.enemiesCombined));
-			window.draw(texts.drawRightTXT(file.getTotalKilled()));
-			window.draw(texts.drawHpTXT(player.hp));
+			
+			texts.drawInGameStatuses(window, bulletVec.enemiesCombined, file.getTotalKilled(), player.hp);
+			
 
 			player.update(deltaTime.dt);
 			player.shoot(bulletVec.bullets, Pclock);

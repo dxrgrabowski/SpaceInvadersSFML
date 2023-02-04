@@ -4,19 +4,19 @@
 
 class mainMenu {
 	sf::Texture backgroundTexture;
-	//sf::Vector2f startingPos{ WIDTH / 2.f, HEIGHT / 2.f };
 	
 	Button optionsButton;
-	Button exitButton;
 
 public:
-	Button playButton;
 	sf::Sprite backgroundSprite;
+	
+	Button playButton;
+	Button exitButton;
 
 	mainMenu(sf::RenderWindow& window) : 
-		playButton(window, { WIDTH / 2.f-60,HEIGHT / 2.f }, Color(252, 186, 3), "Play"), 
-		optionsButton(window, { WIDTH / 2.f - 60,HEIGHT / 2.f + 50 }, Color(3, 235, 252), "Options"),
-		exitButton(window, { WIDTH / 2.f - 60,HEIGHT / 2.f + 100 }, Color(252, 3, 40), "Exit") {
+		playButton({ WIDTH / 2.f-60,HEIGHT / 2.f }, Color(252, 186, 3), "Play"), 
+		optionsButton({ WIDTH / 2.f - 60,HEIGHT / 2.f + 50 }, Color(3, 235, 252), "Options"),
+		exitButton({ WIDTH / 2.f - 60,HEIGHT / 2.f + 100 }, Color(252, 3, 40), "Exit") {
 
 		backgroundTexture.loadFromFile("Assets/bg_1.jpg");
 		backgroundSprite.setTexture(backgroundTexture);
@@ -37,32 +37,27 @@ public:
 
 	}
 
-	void drawButtons(RenderWindow& window) {
+	void handleButtons(RenderWindow& window) {
 		
-		window.draw(playButton.getTxt());
-		window.draw(optionsButton.getTxt());
-		window.draw(exitButton.getTxt());
+		window.draw(playButton.getTXT());
+		window.draw(optionsButton.getTXT());
+		window.draw(exitButton.getTXT());
 		
-		if (playButton.isClicked(window))
-			
-		//if (optionsButton.isClicked(window))
-		if(exitButton.isClicked(window))
+		if (exitButton.isClicked(window))
 			window.close();
-		
-		exitButton.hoverColorChange(Color(152, 186, 3));
-		playButton.hoverColorChange(Color(3, 135, 252));
-		optionsButton.hoverColorChange(Color(152, 3, 40));
+
+		exitButton.hoverColorChange(Color(152, 186, 3),window);
+		playButton.hoverColorChange(Color(3, 135, 252), window);
+		optionsButton.hoverColorChange(Color(152, 3, 40), window);
 	}
 
-	sf::Vector2f calculateNewPosition(float time, float radius) {
+	sf::Vector2f calculateNewBackgroundPosition(float time, float radius) {
 		
 		float angle = time/2;
-
 		
 		float x = radius * cos(angle);
 		float y = radius * sin(angle);
 
 		return sf::Vector2f(x-RADIUS*0.97f, y-RADIUS * 1.5f);
 	}
-
 };

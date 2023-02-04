@@ -56,7 +56,7 @@
     <ClInclude Include="FileMenager.hpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Text.hpp">
+    <ClInclude Include="InGameStatusText.hpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="fileQueue.hpp">
